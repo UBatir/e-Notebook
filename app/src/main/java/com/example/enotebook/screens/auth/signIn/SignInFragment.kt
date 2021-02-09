@@ -2,7 +2,6 @@ package com.example.enotebook.screens.auth.signIn
 
 import android.os.Bundle
 import android.view.View
-import androidx.compose.ui.viewinterop.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.enotebook.R

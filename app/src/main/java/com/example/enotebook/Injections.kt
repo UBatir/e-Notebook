@@ -3,6 +3,9 @@ package com.example.enotebook
 import com.example.enotebook.screens.auth.signIn.SignInViewModel
 import com.example.enotebook.screens.auth.signUp.SignUpViewModel
 import com.example.enotebook.screens.firebase.AuthHelper
+import com.example.enotebook.screens.firebase.FireStoreHelper
+import com.example.enotebook.screens.main.customer.ListNameViewModel
+import com.example.enotebook.screens.main.customer.addCustomer.AddCustomerViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,11 +24,14 @@ val firebaseModule = module {
 
 val helperModule = module {
     single { AuthHelper(get()) }
+    single { FireStoreHelper(get(),get()) }
 }
 
 val viewModelModule = module {
     viewModel { SignInViewModel(get()) }
     viewModel { SignUpViewModel(get()) }
+    viewModel { AddCustomerViewModel(get()) }
+    viewModel { ListNameViewModel(get()) }
 
 }
 val adapterModule = module {
