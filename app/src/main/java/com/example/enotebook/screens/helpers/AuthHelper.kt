@@ -1,4 +1,4 @@
-package com.example.enotebook.screens.firebase
+package com.example.enotebook.screens.helpers
 
 import com.google.firebase.auth.FirebaseAuth
 

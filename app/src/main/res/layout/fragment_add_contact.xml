@@ -6,22 +6,23 @@
     android:background="#FAFAFA"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        tools:ignore="MissingConstraints"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="@dimen/standard_margin"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="24dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="Добавление"
-        android:gravity="bottom|center"
-        android:textColor="#DE000000"/>
+        android:background="@color/design_default_color_primary">
 
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_backspace"/>
+
+    </androidx.appcompat.widget.Toolbar>
     <ImageView
         android:id="@+id/ivName"
         android:layout_width="40dp"
@@ -31,10 +32,10 @@
         app:layout_constraintTop_toTopOf="@id/actvName"
         app:layout_constraintBottom_toBottomOf="@id/actvName"
         android:src="@drawable/ic_person"
-        android:paddingStart="@dimen/little_standart_margin"
+        android:paddingStart="@dimen/little_standard_margin"
         android:paddingEnd="4dp"
-        android:paddingTop="@dimen/little_standart_margin"
-        android:paddingBottom="@dimen/little_standart_margin"
+        android:paddingTop="@dimen/little_standard_margin"
+        android:paddingBottom="@dimen/little_standard_margin"
         android:layout_marginEnd="4dp"/>
 
     <androidx.appcompat.widget.AppCompatAutoCompleteTextView
@@ -45,11 +46,11 @@
         android:inputType="text"
         android:completionThreshold="1"
         app:layout_constraintStart_toEndOf="@id/ivName"
-        app:layout_constraintEnd_toEndOf="@id/tvTitle"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/etSum"
         android:layout_marginTop="@dimen/standard_margin"
-        android:padding="@dimen/little_standart_margin"
+        android:padding="@dimen/little_standard_margin"
         android:background="@drawable/background_edittext"
         android:layout_marginEnd="4dp"/>
 
@@ -62,10 +63,10 @@
         app:layout_constraintTop_toTopOf="@id/etSum"
         app:layout_constraintBottom_toBottomOf="@id/etSum"
         android:src="@drawable/ic_calculate"
-        android:paddingStart="@dimen/little_standart_margin"
+        android:paddingStart="@dimen/little_standard_margin"
         android:paddingEnd="4dp"
-        android:paddingTop="@dimen/little_standart_margin"
-        android:paddingBottom="@dimen/little_standart_margin"
+        android:paddingTop="@dimen/little_standard_margin"
+        android:paddingBottom="@dimen/little_standard_margin"
         android:layout_marginEnd="4dp"
         tools:ignore="MissingConstraints" />
 
@@ -76,8 +77,8 @@
         android:hint="Summa"
         android:inputType="number"
         android:background="@drawable/background_edittext"
-        android:padding="@dimen/little_standart_margin"
-        app:layout_constraintBottom_toTopOf="@id/tvSetData"
+        android:padding="@dimen/little_standard_margin"
+        app:layout_constraintBottom_toTopOf="@id/setData"
         app:layout_constraintEnd_toEndOf="@id/actvName"
         app:layout_constraintStart_toEndOf="@id/ivSum"
         app:layout_constraintTop_toBottomOf="@id/actvName" />
@@ -87,26 +88,39 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         app:layout_constraintStart_toStartOf="@id/ivSum"
-        app:layout_constraintEnd_toStartOf="@id/tvSetData"
-        app:layout_constraintTop_toTopOf="@id/tvSetData"
-        app:layout_constraintBottom_toBottomOf="@id/tvSetData"
+        app:layout_constraintEnd_toStartOf="@id/setData"
+        app:layout_constraintTop_toTopOf="@id/setData"
+        app:layout_constraintBottom_toBottomOf="@id/setData"
         android:src="@drawable/ic_today"
-        android:paddingStart="@dimen/little_standart_margin"
+        android:paddingStart="@dimen/little_standard_margin"
         android:paddingEnd="4dp"
-        android:paddingTop="@dimen/little_standart_margin"
-        android:paddingBottom="@dimen/little_standart_margin"
+        android:paddingTop="@dimen/little_standard_margin"
+        android:paddingBottom="@dimen/little_standard_margin"
         android:layout_marginEnd="4dp"/>
+
+    <TextView
+        android:id="@+id/setData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/ivSetData"
+        app:layout_constraintEnd_toEndOf="@id/tvSetData"
+        app:layout_constraintTop_toBottomOf="@id/etSum"
+        app:layout_constraintBottom_toTopOf="@id/getData"
+        android:hint="Alg'an waqti:"
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"/>
 
     <TextView
         android:id="@+id/tvSetData"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/ivSetData"
+        app:layout_constraintStart_toEndOf="@id/setData"
         app:layout_constraintEnd_toEndOf="@id/etSum"
         app:layout_constraintTop_toBottomOf="@id/etSum"
-        app:layout_constraintBottom_toTopOf="@id/tvGetData"
-        android:hint="Alg'an waqti"
+        app:layout_constraintBottom_toTopOf="@id/getData"
         android:textSize="18sp"
+        android:paddingStart="@dimen/little_standard_margin"
+        android:textStyle="bold"
         android:layout_marginTop="24dp"/>
 
     <ImageView
@@ -115,68 +129,80 @@
         android:layout_height="40dp"
         android:src="@drawable/ic_today"
         app:layout_constraintStart_toStartOf="@id/ivSetData"
-        app:layout_constraintEnd_toStartOf="@id/tvGetData"
-        app:layout_constraintTop_toTopOf="@id/tvGetData"
-        app:layout_constraintBottom_toBottomOf="@id/tvGetData"
-        android:paddingStart="@dimen/little_standart_margin"
+        app:layout_constraintEnd_toStartOf="@id/getData"
+        app:layout_constraintTop_toTopOf="@id/getData"
+        app:layout_constraintBottom_toBottomOf="@id/getData"
+        android:paddingStart="@dimen/little_standard_margin"
         android:paddingEnd="4dp"
-        android:paddingTop="@dimen/little_standart_margin"
-        android:paddingBottom="@dimen/little_standart_margin"
+        android:paddingTop="@dimen/little_standard_margin"
+        android:paddingBottom="@dimen/little_standard_margin"
         android:layout_marginEnd="4dp"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/getData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Qaytaratug'in waqti:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/ivGetData"
+        app:layout_constraintTop_toBottomOf="@id/setData"
+        app:layout_constraintBottom_toTopOf="@id/etPhoneNumber"
+        app:layout_constraintEnd_toStartOf="@id/getData"/>
 
     <TextView
         android:id="@+id/tvGetData"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Qaytaratug'in waqti"
+        android:textStyle="bold"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@id/ivGetData"
+        android:paddingStart="@dimen/little_standard_margin"
+        app:layout_constraintStart_toEndOf="@id/getData"
         app:layout_constraintEnd_toEndOf="@id/tvSetData"
-        app:layout_constraintTop_toBottomOf="@id/tvSetData"
-        app:layout_constraintBottom_toTopOf="@id/etComment" />
+        app:layout_constraintTop_toBottomOf="@id/setData"
+        app:layout_constraintBottom_toTopOf="@id/etPhoneNumber" />
 
     <ImageView
         android:id="@+id/ivComment"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="@id/ivGetData"
+        app:layout_constraintStart_toStartOf="@id/ivPhone"
         app:layout_constraintEnd_toStartOf="@id/etComment"
         app:layout_constraintTop_toTopOf="@id/etComment"
         app:layout_constraintBottom_toBottomOf="@id/etComment"
         android:src="@drawable/ic_add_comment"
-        android:paddingStart="@dimen/little_standart_margin"
+        android:paddingStart="@dimen/little_standard_margin"
         android:paddingEnd="4dp"
-        android:paddingTop="@dimen/little_standart_margin"
-        android:paddingBottom="@dimen/little_standart_margin"
+        android:paddingTop="@dimen/little_standard_margin"
+        android:paddingBottom="@dimen/little_standard_margin"
         android:layout_marginEnd="4dp"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etComment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/tvGetData"
-        app:layout_constraintEnd_toEndOf="@id/tvGetData"
-        app:layout_constraintTop_toBottomOf="@id/tvGetData"
-        app:layout_constraintBottom_toTopOf="@id/etPhoneNumber"
+        app:layout_constraintStart_toStartOf="@id/etPhoneNumber"
+        app:layout_constraintEnd_toEndOf="@id/etPhoneNumber"
+        app:layout_constraintTop_toBottomOf="@id/etPhoneNumber"
+        app:layout_constraintBottom_toTopOf="@id/constr"
         android:hint="@string/qosimsha_mag_liwmat"
         android:background="@drawable/background_edittext"
-        android:padding="@dimen/little_standart_margin"
+        android:padding="@dimen/little_standard_margin"
         android:inputType="text" />
 
     <ImageView
         android:id="@+id/ivPhone"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="@id/ivComment"
+        app:layout_constraintStart_toStartOf="@id/ivGetData"
         app:layout_constraintEnd_toStartOf="@id/etPhoneNumber"
         app:layout_constraintTop_toTopOf="@id/etPhoneNumber"
         app:layout_constraintBottom_toBottomOf="@id/etPhoneNumber"
         android:src="@drawable/ic_phone"
-        android:paddingStart="@dimen/little_standart_margin"
+        android:paddingStart="@dimen/little_standard_margin"
         android:paddingEnd="4dp"
-        android:paddingTop="@dimen/little_standart_margin"
-        android:paddingBottom="@dimen/little_standart_margin"
+        android:paddingTop="@dimen/little_standard_margin"
+        android:paddingBottom="@dimen/little_standard_margin"
         android:layout_marginEnd="4dp"
         tools:ignore="MissingConstraints" />
 
@@ -186,11 +212,11 @@
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
         android:background="@drawable/background_edittext"
-        android:padding="@dimen/little_standart_margin"
-        app:layout_constraintStart_toEndOf="@id/ivPhone"
-        app:layout_constraintEnd_toEndOf="@id/etComment"
-        app:layout_constraintTop_toBottomOf="@id/etComment"
-        app:layout_constraintBottom_toTopOf="@id/constr"
+        android:padding="@dimen/little_standard_margin"
+        app:layout_constraintStart_toStartOf="@id/getData"
+        app:layout_constraintEnd_toEndOf="@id/etSum"
+        app:layout_constraintTop_toBottomOf="@id/getData"
+        app:layout_constraintBottom_toTopOf="@id/etComment"
         android:inputType="phone"
         android:hint="Telefon nomer"/>
 
@@ -202,55 +228,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etPhoneNumber"
+        app:layout_constraintTop_toBottomOf="@id/etComment"
         android:layout_marginTop="28dp">
-
-        <TextView
-            android:id="@+id/btnCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:gravity="center"
-            android:text="ОТМЕНА"
-            android:textStyle="bold"
-            android:textColor="#2E7D32"
-            android:background="#FAFAFA"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="@dimen/standard_margin"
-            android:layout_marginTop="@dimen/little_standart_margin"
-            android:layout_marginBottom="@dimen/little_standart_margin"
-            android:padding="@dimen/little_standart_margin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/constr"
-            app:layout_constraintBottom_toBottomOf="@id/constr"/>
-
-        <Button
-            android:id="@+id/btnMinus"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:gravity="center"
-            android:text="МИНУС"
-            android:background="#FAFAFA"
-            android:textStyle="bold"
-            android:textColor="#fe0101"
-            app:layout_constraintEnd_toStartOf="@id/btnPlus"
-            android:layout_marginEnd="@dimen/little_standart_margin"
-            android:layout_marginTop="@dimen/little_standart_margin"
-            android:layout_marginBottom="@dimen/little_standart_margin"
-            android:padding="@dimen/little_standart_margin"
-            app:layout_constraintTop_toTopOf="@id/constr"
-            app:layout_constraintBottom_toBottomOf="@id/constr"/>
 
         <Button
             android:id="@+id/btnPlus"
             android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:gravity="center"
-            android:text="plus"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Qosi'w"
+            android:layout_margin="@dimen/standard_margin"
+            app:layout_constraintStart_toStartOf="@id/constr"
             app:layout_constraintEnd_toEndOf="@id/constr"
-
             app:layout_constraintTop_toTopOf="@id/constr"
             app:layout_constraintBottom_toBottomOf="@id/constr"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

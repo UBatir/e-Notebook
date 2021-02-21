@@ -1,14 +1,15 @@
-package com.example.enotebook.screens.firebase
+package com.example.enotebook.screens.helpers
 
 
 import com.example.enotebook.Customer
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 
 
 class FireStoreHelper(private val auth:FirebaseAuth,private val db:FirebaseFirestore) {
 
-    fun addContact(name:String,sum:Long,comment:String,phoneNumber:String,getData:String,setData:String,
+    fun addContact(name:String,sum:Long,comment:String,phoneNumber:String,getData:Long,setData:String,
                    onSuccess:()->Unit,onFailure:(msg:String?)->Unit){
         val map:MutableMap<String,Any> = mutableMapOf()
         map["name"]=name
@@ -32,6 +33,23 @@ class FireStoreHelper(private val auth:FirebaseAuth,private val db:FirebaseFires
                     if(collection.documents.isNotEmpty()){
                         onSuccess.invoke(collection.documents.map {
                             it.toObject(Customer::class.java)
+                        })
+                    }else{
+                        onSuccess.invoke(listOf())
+                    }
+                }
+                .addOnFailureListener {
+                    onFailure.invoke(it.localizedMessage)
+                }
+    }
+
+    fun getListName(onSuccess: (list:List<Customer>) -> Unit,onFailure: (msg: String) -> Unit){
+        val time=System.currentTimeMillis()/1000+259200
+        db.collection("contacts").document(auth.currentUser!!.uid).collection("data").whereLessThanOrEqualTo("getData",time).get()
+                .addOnSuccessListener {collection->
+                    if(collection.documents.isNotEmpty()){
+                        onSuccess.invoke(collection.documents.map {
+                            it.toObject(Customer::class.java)!!
                         })
                     }else{
                         onSuccess.invoke(listOf())

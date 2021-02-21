@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.enotebook.screens.extentions.Resource
-import com.example.enotebook.screens.firebase.AuthHelper
+import com.example.enotebook.screens.helpers.AuthHelper
 
 class SignUpViewModel(private val authHelper: AuthHelper):ViewModel() {
 

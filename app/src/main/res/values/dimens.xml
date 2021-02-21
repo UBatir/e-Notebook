@@ -2,5 +2,6 @@
 <resources>
     <dimen name="standard_margin">16dp</dimen>
     <dimen name="standard_size_text">16sp</dimen>
-    <dimen name="little_standart_margin">8dp</dimen>
+    <dimen name="little_standard_margin">8dp</dimen>
+    <dimen name="default_app_bar_radius">16dp</dimen>
 </resources>

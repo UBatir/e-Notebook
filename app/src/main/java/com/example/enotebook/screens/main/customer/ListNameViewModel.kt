@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.enotebook.Customer
 import com.example.enotebook.screens.extentions.Resource
-import com.example.enotebook.screens.firebase.FireStoreHelper
+import com.example.enotebook.screens.helpers.FireStoreHelper
 
 class ListNameViewModel(private val fireStoreHelper: FireStoreHelper):ViewModel() {
 

@@ -1,11 +1,10 @@
 package com.example.enotebook.screens.auth.signIn
 
-import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.enotebook.screens.extentions.Resource
-import com.example.enotebook.screens.firebase.AuthHelper
+import com.example.enotebook.screens.helpers.AuthHelper
 
 class SignInViewModel(private val authHelper: AuthHelper):ViewModel() {
 

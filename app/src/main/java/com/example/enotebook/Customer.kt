@@ -5,6 +5,7 @@ data class Customer(
         var sum:Long=0,
         var comment:String="",
         var phoneNumber:String="",
-        var getData:String="",
-        var setData:String=""
+        var getData:Long=0,
+        var setData:String="",
+        var isChecked:Boolean=false
 )

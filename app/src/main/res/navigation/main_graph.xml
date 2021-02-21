@@ -3,29 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/reportFragment2">
+    app:startDestination="@id/reportFragment">
 
     <fragment
-        android:id="@+id/reportFragment2"
+        android:id="@+id/reportFragment"
         android:name="com.example.enotebook.screens.main.customer.ListNameFragment"
         android:label="fragment_report"
         tools:layout="@layout/fragment_list_name" >
         <action
-            android:id="@+id/action_reportFragment2_to_addContactFragment"
-            app:destination="@id/addContactFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@+id/nav_graph"
-            app:popUpToInclusive="true"/>
+            android:id="@+id/action_reportFragment_to_deadlineListName"
+            app:destination="@id/deadlineListName" />
     </fragment>
     <fragment
-        android:id="@+id/addContactFragment"
-        android:name="com.example.enotebook.screens.main.customer.addCustomer.AddCustomerFragment"
-        android:label="AddContactFragment" >
+        android:id="@+id/deadlineListName"
+        android:name="com.example.enotebook.screens.sms.SmsListNameFragment"
+        android:label="DeadlineListName" >
         <action
-            android:id="@+id/action_addContactFragment_to_reportFragment2"
-            app:destination="@id/reportFragment2"
-            app:launchSingleTop="true"
-            app:popUpTo="@+id/nav_graph"
-            app:popUpToInclusive="true"/>
+            android:id="@+id/action_deadlineListName_to_reportFragment"
+            app:destination="@id/reportFragment" />
     </fragment>
 </navigation>

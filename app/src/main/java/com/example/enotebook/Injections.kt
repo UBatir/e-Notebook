@@ -2,29 +2,29 @@ package com.example.enotebook
 
 import com.example.enotebook.screens.auth.signIn.SignInViewModel
 import com.example.enotebook.screens.auth.signUp.SignUpViewModel
-import com.example.enotebook.screens.firebase.AuthHelper
-import com.example.enotebook.screens.firebase.FireStoreHelper
+import com.example.enotebook.screens.helpers.AuthHelper
+import com.example.enotebook.screens.helpers.FireStoreHelper
+import com.example.enotebook.screens.helpers.SmsHelper
 import com.example.enotebook.screens.main.customer.ListNameViewModel
 import com.example.enotebook.screens.main.customer.addCustomer.AddCustomerViewModel
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.example.enotebook.screens.sms.SmsListNameViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import org.koin.android.ext.koin.androidApplication
+import com.google.firebase.messaging.FirebaseMessaging
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import kotlin.math.sin
 
 val firebaseModule = module {
     single { FirebaseAuth.getInstance() }
     single { FirebaseFirestore.getInstance() }
-    single { GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(androidApplication().applicationContext.getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build() }
+    single { FirebaseMessaging.getInstance() }
 }
 
 val helperModule = module {
     single { AuthHelper(get()) }
     single { FireStoreHelper(get(),get()) }
+    single { SmsHelper }
 }
 
 val viewModelModule = module {
@@ -32,6 +32,7 @@ val viewModelModule = module {
     viewModel { SignUpViewModel(get()) }
     viewModel { AddCustomerViewModel(get()) }
     viewModel { ListNameViewModel(get()) }
+    viewModel { SmsListNameViewModel(get()) }
 
 }
 val adapterModule = module {
