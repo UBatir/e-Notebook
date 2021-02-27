@@ -19,4 +19,28 @@ class ListNameViewModel(private val fireStoreHelper: FireStoreHelper):ViewModel(
             _listContacts.value=Resource.error(it)
         })
     }
+
+    fun deleteContact(customer: Customer){
+        fireStoreHelper.deleteContact(customer,{
+            _listContacts.value=Resource.success(null)
+        },{
+            _listContacts.value=Resource.error(it)
+        })
+    }
+
+    fun changeName(customer: Customer){
+        fireStoreHelper.changeName(customer,{
+            _listContacts.value=Resource.success(null)
+        },{
+            _listContacts.value=Resource.error(it)
+        })
+    }
+
+    fun changeBalance(customer: Customer, sum:Long, comment: String){
+        fireStoreHelper.changeBalance(customer,sum,comment,{
+            _listContacts.value=Resource.success(null)
+        },{
+            _listContacts.value=Resource.error(it)
+        })
+    }
 }

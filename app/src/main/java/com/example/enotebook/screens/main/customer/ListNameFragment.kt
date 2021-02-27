@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.PopupMenu
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.enotebook.Customer
@@ -11,6 +13,8 @@ import com.example.enotebook.R
 import com.example.enotebook.databinding.FragmentListNameBinding
 import com.example.enotebook.screens.extentions.BaseFragment
 import com.example.enotebook.screens.extentions.ResourceState
+import com.example.enotebook.screens.main.customer.dialogs.ChangeBalanceDialog
+import com.example.enotebook.screens.main.customer.dialogs.RenameDialog
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 import kotlin.collections.ArrayList
@@ -29,7 +33,18 @@ class ListNameFragment : BaseFragment(R.layout.fragment_list_name) {
         binding=_binding
         setUpObservers()
         viewModel.getContacts()
+        adapter.setOnClickItemOptionsListener { view: View, customer: Customer ->
+            onItemOptions(view,customer)
+        }
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.getContacts()
+            binding.swipeRefresh.isRefreshing=false
+        }
         binding.recyclerView.adapter=adapter
+        adapter.setOnClickItemListener {
+            val action=ListNameFragmentDirections.actionReportFragmentToHistoryFragment(it.id,it.name)
+            navController.navigate(action)
+        }
         binding.etSearch.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(p0: Editable?) {
                     p0?.let {
@@ -49,15 +64,17 @@ class ListNameFragment : BaseFragment(R.layout.fragment_list_name) {
     }
 
     private fun setUpObservers() {
-        viewModel.listContacts.observe(viewLifecycleOwner, {
-            when (it.status) {
+        viewModel.listContacts.observe(viewLifecycleOwner, { collection ->
+            when (collection.status) {
                 ResourceState.SUCCESS -> {
-                    if (it.data!!.isNotEmpty()) {
-                        adapter.models = it.data
+                    collection.data?.let {
+                        if (it.isNotEmpty()) {
+                            adapter.models = it
+                        }
                     }
                 }
                 ResourceState.ERROR -> {
-                    toastLN(it.message)
+                    toastLN(collection.message)
                 }
             }
         })
@@ -73,4 +90,46 @@ class ListNameFragment : BaseFragment(R.layout.fragment_list_name) {
         adapter.filterList(filteredListName)
     }
 
+
+    private fun onItemOptions(view: View,customer: Customer){
+        val optionsMenu= PopupMenu(requireContext(),view)
+        val menuInflater=optionsMenu.menuInflater
+        menuInflater.inflate(R.menu.item_menu,optionsMenu.menu)
+        optionsMenu.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.itemChangeBalance->{
+                    val dialog= ChangeBalanceDialog(requireContext())
+                    dialog.name=customer.name
+                    dialog.sum=customer.sum
+                    dialog.changeBalance { total: Long, sum: Long, comment:String ->
+                        customer.sum=total
+                        viewModel.changeBalance(customer,sum,comment)
+                    }
+                    dialog.show()
+                }
+                R.id.itemRename->{
+                    val dialog= RenameDialog(requireContext())
+                    dialog.name = customer.name
+                    dialog.renameContact {name->
+                        customer.name=name
+                        viewModel.changeName(customer)
+                    }
+                    dialog.show()
+                }
+                R.id.itemDelete -> {
+                    val dialog = AlertDialog.Builder(requireContext())
+                    dialog.setTitle("Kontakti oshiriw")
+                    dialog.setMessage("Siz bul kontakti oshirejaqsizba?")
+                    dialog.setPositiveButton("AWA") { _, _ ->
+                        viewModel.deleteContact(customer)
+                    }
+                    dialog.setNegativeButton("YAQ") { _, _ ->
+                    }
+                    dialog.show()
+                }
+            }
+            return@setOnMenuItemClickListener true
+        }
+        optionsMenu.show()
+    }
 }

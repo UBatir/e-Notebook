@@ -17,7 +17,6 @@ object SmsHelper {
     var numbers: List<String> = listOf()
 
     fun send(text: String) {
-        Log.d("nomerler", numbers.toString())
         val sentPendingIntents = ArrayList<PendingIntent>()
         val deliveredPendingIntents = ArrayList<PendingIntent>()
         val sentPI = PendingIntent.getBroadcast(context, 0,
@@ -31,9 +30,7 @@ object SmsHelper {
                     sentPendingIntents, deliveredPendingIntents)
             } catch (e: Exception) {
                 e.printStackTrace()
-                Log.d("oshibka", e.localizedMessage!!)
-                Toast.makeText(context, "SMS sending failed...", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "SMS ketpi qaldi...", Toast.LENGTH_SHORT).show()
             }
     }
-
 }

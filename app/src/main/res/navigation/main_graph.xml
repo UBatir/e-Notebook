@@ -11,15 +11,34 @@
         android:label="fragment_report"
         tools:layout="@layout/fragment_list_name" >
         <action
-            android:id="@+id/action_reportFragment_to_deadlineListName"
-            app:destination="@id/deadlineListName" />
+            android:id="@+id/action_reportFragment_to_smsListName"
+            app:destination="@id/smsListName" />
+        <action
+            android:id="@+id/action_reportFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/deadlineListName"
+        android:id="@+id/smsListName"
         android:name="com.example.enotebook.screens.sms.SmsListNameFragment"
-        android:label="DeadlineListName" >
+        android:label="DeadlineListName"
+        tools:layout="@layout/sms_list_name">
         <action
-            android:id="@+id/action_deadlineListName_to_reportFragment"
+            android:id="@+id/action_smsListName_to_reportFragment"
             app:destination="@id/reportFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.enotebook.screens.main.history.HistoryFragment"
+        android:label="HistoryFragment"
+        tools:layout="@layout/fragment_history">
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
 </navigation>

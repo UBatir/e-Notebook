@@ -1,4 +1,4 @@
-package com.example.enotebook.screens.main.customer.addCustomer
+package com.example.enotebook.screens.main.customer.dialogs
 
 import android.app.Dialog
 import android.content.Context

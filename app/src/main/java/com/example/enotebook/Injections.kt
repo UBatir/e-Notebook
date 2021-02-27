@@ -7,13 +7,13 @@ import com.example.enotebook.screens.helpers.FireStoreHelper
 import com.example.enotebook.screens.helpers.SmsHelper
 import com.example.enotebook.screens.main.customer.ListNameViewModel
 import com.example.enotebook.screens.main.customer.addCustomer.AddCustomerViewModel
+import com.example.enotebook.screens.main.history.HistoryViewModel
 import com.example.enotebook.screens.sms.SmsListNameViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessaging
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import kotlin.math.sin
 
 val firebaseModule = module {
     single { FirebaseAuth.getInstance() }
@@ -33,6 +33,7 @@ val viewModelModule = module {
     viewModel { AddCustomerViewModel(get()) }
     viewModel { ListNameViewModel(get()) }
     viewModel { SmsListNameViewModel(get()) }
+    viewModel { HistoryViewModel(get ()) }
 
 }
 val adapterModule = module {

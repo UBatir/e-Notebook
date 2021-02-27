@@ -12,9 +12,9 @@ class AddCustomerViewModel(private val fireStoreHelper: FireStoreHelper):ViewMod
     private val _contactSet:MutableLiveData<Resource<Customer>> = MutableLiveData()
     val contactSet:LiveData<Resource<Customer>> get() = _contactSet
 
-    fun addContact(name:String,sum:Long,comment:String,phoneNumber:String,getData:Long,setData:String){
+    fun addContact(customer: Customer){
         _contactSet.value=Resource.loading()
-        fireStoreHelper.addContact(name,sum,comment,phoneNumber,getData,setData,{
+        fireStoreHelper.addContact(customer,{
             _contactSet.value=Resource.success(null)
         },{
             _contactSet.value=Resource.error(it)

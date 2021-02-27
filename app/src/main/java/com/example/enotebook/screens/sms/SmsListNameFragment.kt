@@ -1,11 +1,9 @@
 package com.example.enotebook.screens.sms
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.enotebook.Customer
 import com.example.enotebook.R
 import com.example.enotebook.databinding.FragmentSmsListNameBinding
 import com.example.enotebook.screens.extentions.BaseFragment
@@ -32,7 +30,6 @@ class SmsListNameFragment:BaseFragment(R.layout.fragment_sms_list_name) {
             val text=binding.etSendSms.text.toString()
             if(text.isNotEmpty()){
                 viewModel.sendSms(text,mAdapter.models.filter { it.isChecked }.map { it.phoneNumber },requireContext())
-            Log.d("abc", mAdapter.models.filter { it.isChecked }.toString())
             }else{
                 binding.etSendSms.error=getString(R.string.enter_the_field)
             }

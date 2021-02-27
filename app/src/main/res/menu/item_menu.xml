@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group>
+        <item android:id="@+id/item_Sum_Null"
+            android:title="Summani oshiriw"/>
+
+        <item android:id="@+id/item_History"
+            android:title="Tariyx"/>
+
+        <item android:id="@+id/itemChangeBalance"
+            android:title="Summani ozgertiw"/>
+
+        <item android:id="@+id/itemRename"
+            android:title="Atin ozgertiw"/>
+
+        <item android:id="@+id/itemDelete"
+            android:title="Kontakti oshiriw" />
+    </group>
+</menu>
