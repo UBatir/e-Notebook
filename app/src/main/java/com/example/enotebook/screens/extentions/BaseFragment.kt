@@ -1,6 +1,7 @@
 package com.example.enotebook.screens.extentions
 
 import android.app.Activity
+import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -25,4 +26,6 @@ open class BaseFragment(resId: Int) : Fragment(resId) {
         }
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
+
+    open fun onRestoreInstanceState(savedInstanceState: Bundle) {}
 }

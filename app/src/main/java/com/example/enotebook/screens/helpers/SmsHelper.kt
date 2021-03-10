@@ -11,26 +11,33 @@ import com.example.enotebook.screens.sms.SmsSentReceiver
 
 @SuppressLint("StaticFieldLeak")
 object SmsHelper {
-    var text = ""
+    var text=""
     var cnt = 0
     var context: Context? = null
-    var numbers: List<String> = listOf()
+    var numbers: MutableList<String> = mutableListOf()
+    var sum: MutableList<String> = mutableListOf()
+    var data: MutableList<String> = mutableListOf()
 
-    fun send(text: String) {
+
+    fun send(text:String) {
         val sentPendingIntents = ArrayList<PendingIntent>()
         val deliveredPendingIntents = ArrayList<PendingIntent>()
         val sentPI = PendingIntent.getBroadcast(context, 0,
             Intent(context, SmsSentReceiver::class.java), 0)
-        if (cnt < numbers.size)
-            try {
+                    try {
                 val sms = SmsManager.getDefault()
-                val mSMSMessage: ArrayList<String> = sms.divideMessage(text)
                 sentPendingIntents.add(sentPI)
+                val mSMSMessage: ArrayList<String> = sms.divideMessage("$text \n Qariz mug'dari: ${sum[cnt]}  \n Kelisilgen waqit: ${data[cnt]}")
                 sms.sendMultipartTextMessage(numbers[cnt++], null, mSMSMessage,
                     sentPendingIntents, deliveredPendingIntents)
+                if (cnt == numbers.size){
+                    cnt = -1
+                    numbers.clear()
+                    sum.clear()
+                    data.clear()
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
-                Toast.makeText(context, "SMS ketpi qaldi...", Toast.LENGTH_SHORT).show()
             }
     }
 }

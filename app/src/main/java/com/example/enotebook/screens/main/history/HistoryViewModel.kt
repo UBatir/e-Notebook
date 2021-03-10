@@ -13,6 +13,7 @@ class HistoryViewModel(private val fireStoreHelper: FireStoreHelper):ViewModel()
     val listHistory:LiveData<Resource<List<Customer?>>> get() = _listHistory
 
     fun getHistory(id:String){
+        _listHistory.value=Resource.loading()
         fireStoreHelper.getHistory(id,{
             _listHistory.value=Resource.success(it)
         },{

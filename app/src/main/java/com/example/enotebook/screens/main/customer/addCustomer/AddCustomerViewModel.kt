@@ -20,4 +20,13 @@ class AddCustomerViewModel(private val fireStoreHelper: FireStoreHelper):ViewMod
             _contactSet.value=Resource.error(it)
         })
     }
+
+    fun addInstallment(customer: Customer){
+        _contactSet.value=Resource.loading()
+        fireStoreHelper.addInstallment(customer,{
+            _contactSet.value=Resource.success(null)
+        },{
+            _contactSet.value=Resource.error(it)
+        })
+    }
 }

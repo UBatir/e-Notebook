@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/ivName"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/actvName"
+        app:layout_constraintTop_toTopOf="@id/actvName"
+        app:layout_constraintBottom_toBottomOf="@id/actvName"
+        android:src="@drawable/ic_person"
+        android:paddingStart="@dimen/little_standard_margin"
+        android:paddingEnd="4dp"
+        android:paddingTop="@dimen/little_standard_margin"
+        android:paddingBottom="@dimen/little_standard_margin"
+        android:layout_marginEnd="4dp"/>
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/actvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="F.I.O"
+        android:inputType="text"
+        android:completionThreshold="1"
+        app:layout_constraintStart_toEndOf="@id/ivName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/etSum"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:padding="@dimen/little_standard_margin"
+        android:background="@drawable/background_edittext"
+        android:layout_marginEnd="4dp"/>
+
+    <ImageView
+        android:id="@+id/ivSum"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@id/ivName"
+        app:layout_constraintEnd_toStartOf="@id/etSum"
+        app:layout_constraintTop_toTopOf="@id/etSum"
+        app:layout_constraintBottom_toBottomOf="@id/etSum"
+        android:src="@drawable/ic_calculate"
+        android:paddingStart="@dimen/little_standard_margin"
+        android:paddingEnd="4dp"
+        android:paddingTop="@dimen/little_standard_margin"
+        android:paddingBottom="@dimen/little_standard_margin"
+        android:layout_marginEnd="4dp"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etSum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Summa"
+        android:inputType="number"
+        android:background="@drawable/background_edittext"
+        android:padding="@dimen/little_standard_margin"
+        app:layout_constraintBottom_toTopOf="@id/setData"
+        app:layout_constraintEnd_toEndOf="@id/actvName"
+        app:layout_constraintTop_toBottomOf="@id/actvName"
+        app:layout_constraintStart_toEndOf="@id/ivSum" />
+
+    <ImageView
+        android:id="@+id/ivSetData"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@id/ivSum"
+        app:layout_constraintEnd_toStartOf="@id/setData"
+        app:layout_constraintTop_toTopOf="@id/setData"
+        app:layout_constraintBottom_toBottomOf="@id/setData"
+        android:src="@drawable/ic_today"
+        android:paddingStart="@dimen/little_standard_margin"
+        android:paddingEnd="4dp"
+        android:paddingTop="@dimen/little_standard_margin"
+        android:paddingBottom="@dimen/little_standard_margin"
+        android:layout_marginEnd="4dp"/>
+
+    <TextView
+        android:id="@+id/setData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/ivSetData"
+        app:layout_constraintEnd_toEndOf="@id/tvSetData"
+        app:layout_constraintBottom_toTopOf="@id/getData"
+        app:layout_constraintTop_toBottomOf="@id/etSum"
+        android:hint="Alg'an waqti:"
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"/>
+
+    <TextView
+        android:id="@+id/tvSetData"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/setData"
+        app:layout_constraintEnd_toEndOf="@id/etSum"
+        app:layout_constraintBottom_toTopOf="@id/getData"
+        app:layout_constraintTop_toBottomOf="@id/etSum"
+        android:textSize="18sp"
+        android:paddingStart="@dimen/little_standard_margin"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp"/>
+
+    <ImageView
+        android:id="@+id/ivGetData"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_today"
+        app:layout_constraintStart_toStartOf="@id/ivSetData"
+        app:layout_constraintEnd_toStartOf="@id/getData"
+        app:layout_constraintTop_toTopOf="@id/getData"
+        app:layout_constraintBottom_toBottomOf="@id/getData"
+        android:paddingStart="@dimen/little_standard_margin"
+        android:paddingEnd="4dp"
+        android:paddingTop="@dimen/little_standard_margin"
+        android:paddingBottom="@dimen/little_standard_margin"
+        android:layout_marginEnd="4dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/getData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Neshe ayg'a bolip beriw:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/ivGetData"
+        app:layout_constraintBottom_toTopOf="@id/etPhoneNumber"
+        app:layout_constraintEnd_toStartOf="@id/getData"
+        app:layout_constraintTop_toBottomOf="@id/tvSetData"/>
+
+    <EditText
+        android:id="@+id/etCountMonths"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:background="@drawable/background_edittext"
+        android:layout_marginStart="4dp"
+        android:padding="@dimen/little_standard_margin"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@id/getData"
+        app:layout_constraintEnd_toEndOf="@id/tvSetData"
+        app:layout_constraintBottom_toTopOf="@id/etPhoneNumber"
+        app:layout_constraintTop_toBottomOf="@id/tvSetData"/>
+
+    <ImageView
+        android:id="@+id/ivComment"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@id/ivPhone"
+        app:layout_constraintEnd_toStartOf="@id/etComment"
+        app:layout_constraintTop_toTopOf="@id/etComment"
+        app:layout_constraintBottom_toBottomOf="@id/etComment"
+        android:src="@drawable/ic_add_comment"
+        android:paddingStart="@dimen/little_standard_margin"
+        android:paddingEnd="4dp"
+        android:paddingTop="@dimen/little_standard_margin"
+        android:paddingBottom="@dimen/little_standard_margin"
+        android:layout_marginEnd="4dp"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etComment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/etPhoneNumber"
+        app:layout_constraintEnd_toEndOf="@id/etPhoneNumber"
+        app:layout_constraintBottom_toTopOf="@id/btnPlus"
+        app:layout_constraintTop_toBottomOf="@id/etPhoneNumber"
+        android:hint="@string/qosimsha_mag_liwmat"
+        android:background="@drawable/background_edittext"
+        android:padding="@dimen/little_standard_margin"
+        android:inputType="text" />
+
+    <ImageView
+        android:id="@+id/ivPhone"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@id/ivGetData"
+        app:layout_constraintEnd_toStartOf="@id/etPhoneNumber"
+        app:layout_constraintTop_toTopOf="@id/etPhoneNumber"
+        app:layout_constraintBottom_toBottomOf="@id/etPhoneNumber"
+        android:src="@drawable/ic_phone"
+        android:paddingStart="@dimen/little_standard_margin"
+        android:paddingEnd="4dp"
+        android:paddingTop="@dimen/little_standard_margin"
+        android:paddingBottom="@dimen/little_standard_margin"
+        android:layout_marginEnd="4dp"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/etPhoneNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:background="@drawable/background_edittext"
+        android:padding="@dimen/little_standard_margin"
+        app:layout_constraintStart_toStartOf="@id/getData"
+        app:layout_constraintEnd_toEndOf="@id/etSum"
+        app:layout_constraintBottom_toTopOf="@id/etComment"
+        app:layout_constraintTop_toBottomOf="@id/getData"
+        android:inputType="phone"
+        android:hint="Telefon nomer"/>
+
+    <Button
+        android:id="@+id/btnPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Qosi'w"
+        android:layout_margin="@dimen/standard_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etComment"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

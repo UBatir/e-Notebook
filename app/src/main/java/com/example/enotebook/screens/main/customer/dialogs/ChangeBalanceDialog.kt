@@ -10,7 +10,7 @@ import java.util.*
 
 class ChangeBalanceDialog(context: Context):Dialog(context) {
 
-    private lateinit var binding:DiaogChangeBalanceBinding
+    private lateinit var binding: DiaogChangeBalanceBinding
     var name:String=""
     var sum:Long=0
 

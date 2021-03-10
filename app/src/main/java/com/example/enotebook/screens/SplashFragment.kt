@@ -14,21 +14,13 @@ import org.koin.android.ext.android.inject
 class SplashFragment : BaseFragment(R.layout.fragment_splash) {
 
     private lateinit var navController: NavController
-    private val auth: FirebaseAuth by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController=Navigation.findNavController(view)
         Handler(Looper.getMainLooper()).postDelayed({
-            if(auth.currentUser==null){
-                val action=SplashFragmentDirections.actionSplashFragmentToAuthorizationFragment()
-                navController.navigate(action)
-            }
-            else{
-                val action=SplashFragmentDirections.actionSplashFragmentToMainFragment()
-                navController.navigate(action)
-
-            }
+            val action=SplashFragmentDirections.actionSplashFragmentToPasswordFragment()
+            navController.navigate(action)
         },2000)
     }
 }

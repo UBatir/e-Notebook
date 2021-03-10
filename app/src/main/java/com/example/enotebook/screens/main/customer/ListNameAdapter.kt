@@ -14,7 +14,7 @@ class ListNameAdapter : RecyclerView.Adapter<ListNameAdapter.ListNameViewHolder>
     inner class ListNameViewHolder(private val binding: NoteListNameBinding) : RecyclerView.ViewHolder(
             binding.root
     ) {
-        fun populateModel(model: Customer?) {
+        fun populateModel(model: Customer?,position: Int) {
             binding.tvName.text = model!!.name
             binding.tvSum.text = model.sum.toString()
             binding.tvComment.text = model.comment
@@ -22,7 +22,7 @@ class ListNameAdapter : RecyclerView.Adapter<ListNameAdapter.ListNameViewHolder>
                 onItemClick.invoke(model)
             }
             binding.btnOptions.onClick {
-                onItemClickOptions.invoke(binding.btnOptions, model)
+                onItemClickOptions.invoke(binding.btnOptions, model,position)
             }
         }
     }
@@ -32,12 +32,12 @@ class ListNameAdapter : RecyclerView.Adapter<ListNameAdapter.ListNameViewHolder>
         this.onItemClick=onItemClick
     }
 
-    private var onItemClickOptions: (view: View, customer: Customer) -> Unit = { _: View, _: Customer -> }
-    fun setOnClickItemOptionsListener(onItemClickOptions: (view: View, customer: Customer) -> Unit) {
+    private var onItemClickOptions: (view: View, customer: Customer,position:Int) -> Unit = { view: View, customer: Customer, i: Int -> }
+    fun setOnClickItemOptionsListener(onItemClickOptions: (view: View, customer: Customer,position:Int) -> Unit) {
         this.onItemClickOptions = onItemClickOptions
     }
 
-    var models: List<Customer?> = listOf()
+    var models: MutableList<Customer?> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -51,14 +51,20 @@ class ListNameAdapter : RecyclerView.Adapter<ListNameAdapter.ListNameViewHolder>
 
 
     override fun onBindViewHolder(holder: ListNameViewHolder, position: Int) {
-        holder.populateModel(models[position])
+        holder.populateModel(models[position],position)
     }
 
     override fun getItemCount() = models.size
 
-    fun filterList(filteredListName: ArrayList<Customer>) {
+    fun filterList(filteredListName: MutableList<Customer?>) {
         models = filteredListName;
         notifyDataSetChanged();
+    }
+
+    fun delete(position: Int){
+        models.removeAt(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, models.size)
     }
 
 }

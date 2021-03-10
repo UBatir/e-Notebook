@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">e-Notebook</string>
+    <string name="app_name">Qariz Daptershesi</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="email_not_entered_error">Please, enter your Email address</string>
@@ -9,7 +9,17 @@
     <string name="enter_number">"Please, enter the number"</string>
     <string name="enter_name">"Please, enter the name"</string>
     <string name="todo">TODO</string>
-    <string name="spisok">Spisok</string>
+    <string name="spisok">Dizim</string>
     <string name="sms">SMS</string>
     <string name="enter_the_field">Polyaga birzat jazin\'</string>
+    <string name="key_1">1</string>
+    <string name="key_2">2</string>
+    <string name="key_3">3</string>
+    <string name="key_4">4</string>
+    <string name="key_5">5</string>
+    <string name="key_6">6</string>
+    <string name="key_7">7</string>
+    <string name="key_8">8</string>
+    <string name="key_9">9</string>
+    <string name="key_0">0</string>
 </resources>

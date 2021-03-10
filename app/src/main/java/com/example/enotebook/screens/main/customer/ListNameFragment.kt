@@ -15,6 +15,7 @@ import com.example.enotebook.screens.extentions.BaseFragment
 import com.example.enotebook.screens.extentions.ResourceState
 import com.example.enotebook.screens.main.customer.dialogs.ChangeBalanceDialog
 import com.example.enotebook.screens.main.customer.dialogs.RenameDialog
+import com.example.enotebook.utils.Settings
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 import kotlin.collections.ArrayList
@@ -26,6 +27,7 @@ class ListNameFragment : BaseFragment(R.layout.fragment_list_name) {
     private val viewModel: ListNameViewModel by viewModel()
     private val adapter=ListNameAdapter()
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController=Navigation.findNavController(view)
@@ -33,8 +35,8 @@ class ListNameFragment : BaseFragment(R.layout.fragment_list_name) {
         binding=_binding
         setUpObservers()
         viewModel.getContacts()
-        adapter.setOnClickItemOptionsListener { view: View, customer: Customer ->
-            onItemOptions(view,customer)
+        adapter.setOnClickItemOptionsListener { view: View, customer: Customer, position: Int ->
+            onItemOptions(view,customer,position)
         }
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.getContacts()
@@ -66,14 +68,19 @@ class ListNameFragment : BaseFragment(R.layout.fragment_list_name) {
     private fun setUpObservers() {
         viewModel.listContacts.observe(viewLifecycleOwner, { collection ->
             when (collection.status) {
+                ResourceState.LOADING->{
+                    binding.progressBar.visibility=View.VISIBLE
+                }
                 ResourceState.SUCCESS -> {
+                    binding.progressBar.visibility=View.GONE
                     collection.data?.let {
                         if (it.isNotEmpty()) {
-                            adapter.models = it
+                            adapter.models = it as MutableList<Customer?>
                         }
                     }
                 }
                 ResourceState.ERROR -> {
+                    binding.progressBar.visibility = View.GONE
                     toastLN(collection.message)
                 }
             }
@@ -87,16 +94,20 @@ class ListNameFragment : BaseFragment(R.layout.fragment_list_name) {
                 filteredListName.add(eachName)
             }
         }
-        adapter.filterList(filteredListName)
+        adapter.filterList(filteredListName as MutableList<Customer?>)
     }
 
 
-    private fun onItemOptions(view: View,customer: Customer){
+    private fun onItemOptions(view: View,customer: Customer,position:Int){
         val optionsMenu= PopupMenu(requireContext(),view)
         val menuInflater=optionsMenu.menuInflater
         menuInflater.inflate(R.menu.item_menu,optionsMenu.menu)
         optionsMenu.setOnMenuItemClickListener {
             when(it.itemId){
+                R.id.itemHistory->{
+                    val action=ListNameFragmentDirections.actionReportFragmentToHistoryFragment(customer.id,customer.name)
+                    navController.navigate(action)
+                }
                 R.id.itemChangeBalance->{
                     val dialog= ChangeBalanceDialog(requireContext())
                     dialog.name=customer.name
@@ -104,6 +115,7 @@ class ListNameFragment : BaseFragment(R.layout.fragment_list_name) {
                     dialog.changeBalance { total: Long, sum: Long, comment:String ->
                         customer.sum=total
                         viewModel.changeBalance(customer,sum,comment)
+                        adapter.notifyDataSetChanged()
                     }
                     dialog.show()
                 }
@@ -113,6 +125,7 @@ class ListNameFragment : BaseFragment(R.layout.fragment_list_name) {
                     dialog.renameContact {name->
                         customer.name=name
                         viewModel.changeName(customer)
+                        adapter.notifyDataSetChanged()
                     }
                     dialog.show()
                 }
@@ -122,6 +135,7 @@ class ListNameFragment : BaseFragment(R.layout.fragment_list_name) {
                     dialog.setMessage("Siz bul kontakti oshirejaqsizba?")
                     dialog.setPositiveButton("AWA") { _, _ ->
                         viewModel.deleteContact(customer)
+                        adapter.delete(position)
                     }
                     dialog.setNegativeButton("YAQ") { _, _ ->
                     }

@@ -5,12 +5,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent">
 
-    <androidx.core.widget.ContentLoadingProgressBar
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/design_default_color_primary"
+        tools:ignore="MissingConstraints">
+
+
+        <CheckBox
+            android:id="@+id/btnCheckAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/white"
+            android:layout_gravity="end"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hammesi:"
+            android:textColor="@color/white"
+            android:layout_gravity="end"
+            android:layout_marginEnd="4dp"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ProgressBar
         android:id="@+id/progressBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:elevation="5dp"
         android:layout_width="wrap_content"
         android:visibility="gone"
         android:layout_height="wrap_content"
@@ -23,7 +52,7 @@
         android:id="@+id/recyclerViewListName"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toTopOf="@id/etSendSms"
         tools:ignore="MissingConstraints" />
 
@@ -35,7 +64,11 @@
         android:background="@drawable/sms_border"
         android:hint="Text here ..."
         android:inputType="text"
-        android:layout_margin="@dimen/standard_margin"
+        android:layout_marginStart="@dimen/standard_margin"
+        android:layout_marginEnd="@dimen/standard_margin"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewListName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btnSendSms"

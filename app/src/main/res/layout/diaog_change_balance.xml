@@ -55,7 +55,7 @@
         android:id="@+id/etSum"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Сумма"
+        android:hint="Summa"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="@id/tvName"
         app:layout_constraintEnd_toEndOf="@id/line"
@@ -71,7 +71,7 @@
         app:layout_constraintEnd_toEndOf="@id/etSum"
         app:layout_constraintTop_toBottomOf="@id/etSum"
         android:layout_marginTop="@dimen/little_standard_margin"
-        android:hint="Комментарий"
+        android:hint="Qosimsha mag'liwmat"
         android:inputType="text" />
 
     <Button
@@ -82,9 +82,7 @@
         app:layout_constraintEnd_toStartOf="@id/btnPlus"
         app:layout_constraintTop_toBottomOf="@id/etComment"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="МИНУС"
-        android:backgroundTint="#E4F9F5"
-        android:textColor="#e53935"
+        android:text="Minus"
         android:layout_marginTop="@dimen/standard_margin"
         android:layout_marginBottom="@dimen/standard_margin"
         android:padding="@dimen/little_standard_margin" />
@@ -98,9 +96,7 @@
         app:layout_constraintEnd_toEndOf="@id/etComment"
         app:layout_constraintTop_toBottomOf="@id/etComment"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="ПЛЮС"
-        android:backgroundTint="#E3FDFD"
-        android:textColor="#43A047"
+        android:text="Plyus"
         android:layout_marginTop="@dimen/standard_margin"
         android:layout_marginBottom="@dimen/standard_margin"
         android:layout_marginStart="@dimen/little_standard_margin"

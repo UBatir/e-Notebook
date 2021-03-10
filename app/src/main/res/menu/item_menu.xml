@@ -2,10 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group>
-        <item android:id="@+id/item_Sum_Null"
-            android:title="Summani oshiriw"/>
-
-        <item android:id="@+id/item_History"
+        <item android:id="@+id/itemHistory"
             android:title="Tariyx"/>
 
         <item android:id="@+id/itemChangeBalance"

@@ -13,6 +13,7 @@ class ListNameViewModel(private val fireStoreHelper: FireStoreHelper):ViewModel(
     val listContacts:LiveData<Resource<List<Customer?>>> get() = _listContacts
 
     fun getContacts(){
+        _listContacts.value=Resource.loading()
         fireStoreHelper.getContacts({
             _listContacts.value= Resource.success(it)
         },{

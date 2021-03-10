@@ -13,33 +13,20 @@ class SmsSentReceiver: BroadcastReceiver() {
         when (resultCode) {
             Activity.RESULT_OK -> {
                 SmsHelper.send(SmsHelper.text)
-                Toast.makeText(context, "SMS SENT ${SmsHelper.cnt}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Sms ketti", Toast.LENGTH_SHORT).show()
             }
             SmsManager.RESULT_ERROR_GENERIC_FAILURE -> {
-                Toast.makeText(
-                        context,
-                        "SMS generic failure ${SmsHelper.cnt}",
-                        Toast.LENGTH_SHORT
-                ).show()
                 SmsHelper.send(SmsHelper.text)
+                Toast.makeText(context, "Sms ketti", Toast.LENGTH_SHORT).show()
             }
 
             SmsManager.RESULT_ERROR_NO_SERVICE -> {
-                Toast.makeText(
-                        context,
-                        "SMS no service ${SmsHelper.cnt}",
-                        Toast.LENGTH_SHORT
-                )
-                        .show()
                 SmsHelper.send(SmsHelper.text)
+                Toast.makeText(context, "Sms ketti", Toast.LENGTH_SHORT).show()
             }
             SmsManager.RESULT_ERROR_NULL_PDU -> {
-                Toast.makeText(
-                        context,
-                        "SMS null PDU ${SmsHelper.cnt}",
-                        Toast.LENGTH_SHORT
-                ).show()
                 SmsHelper.send(SmsHelper.text)
+                Toast.makeText(context, "Sms ketti", Toast.LENGTH_SHORT).show()
             }
             else -> {}
         }

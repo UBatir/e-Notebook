@@ -9,6 +9,7 @@ import com.example.enotebook.databinding.FragmentSignInBinding
 import com.example.enotebook.screens.extentions.BaseFragment
 import com.example.enotebook.screens.extentions.ResourceState
 import com.example.enotebook.screens.extentions.onClick
+import com.example.enotebook.utils.Settings
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class SignInFragment : BaseFragment(R.layout.fragment_sign_in){
@@ -16,11 +17,14 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in){
     private lateinit var navController: NavController
     private lateinit var binding: FragmentSignInBinding
     private val viewModel: SignInViewModel by viewModel()
+    private lateinit var settings: Settings
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController=Navigation.findNavController(view)
         val _binding=FragmentSignInBinding.bind(view)
+        settings= Settings(requireContext())
+        settings.setFirstLaunched()
         binding=_binding
         setUpObservers()
         with(binding){
