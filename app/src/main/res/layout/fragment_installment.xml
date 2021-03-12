@@ -86,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/ivSetData"
-        app:layout_constraintEnd_toEndOf="@id/tvSetData"
+        app:layout_constraintEnd_toEndOf="@id/tv_set_date"
         app:layout_constraintBottom_toTopOf="@id/getData"
         app:layout_constraintTop_toBottomOf="@id/etSum"
         android:hint="Alg'an waqti:"
@@ -94,7 +94,7 @@
         android:layout_marginTop="24dp"/>
 
     <TextView
-        android:id="@+id/tvSetData"
+        android:id="@+id/tv_set_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/setData"
@@ -131,7 +131,7 @@
         app:layout_constraintStart_toEndOf="@id/ivGetData"
         app:layout_constraintBottom_toTopOf="@id/etPhoneNumber"
         app:layout_constraintEnd_toStartOf="@id/getData"
-        app:layout_constraintTop_toBottomOf="@id/tvSetData"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_set_date"/>
 
     <EditText
         android:id="@+id/etCountMonths"
@@ -144,9 +144,9 @@
         android:padding="@dimen/little_standard_margin"
         android:inputType="number"
         app:layout_constraintStart_toEndOf="@id/getData"
-        app:layout_constraintEnd_toEndOf="@id/tvSetData"
+        app:layout_constraintEnd_toEndOf="@id/tv_set_date"
         app:layout_constraintBottom_toTopOf="@id/etPhoneNumber"
-        app:layout_constraintTop_toBottomOf="@id/tvSetData"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_set_date"/>
 
     <ImageView
         android:id="@+id/ivComment"

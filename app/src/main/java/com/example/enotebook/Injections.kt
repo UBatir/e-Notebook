@@ -7,6 +7,8 @@ import com.example.enotebook.screens.helpers.FireStoreHelper
 import com.example.enotebook.screens.helpers.SmsHelper
 import com.example.enotebook.screens.main.customer.ListNameViewModel
 import com.example.enotebook.screens.main.customer.addCustomer.AddCustomerViewModel
+import com.example.enotebook.screens.main.customer.count.PersonFragment
+import com.example.enotebook.screens.main.customer.count.PersonViewModel
 import com.example.enotebook.screens.main.history.HistoryViewModel
 import com.example.enotebook.screens.sms.SmsListNameViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -34,6 +36,7 @@ val viewModelModule = module {
     viewModel { ListNameViewModel(get()) }
     viewModel { SmsListNameViewModel(get()) }
     viewModel { HistoryViewModel(get ()) }
+    viewModel { PersonViewModel(get())}
 
 }
 val adapterModule = module {

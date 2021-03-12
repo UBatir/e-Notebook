@@ -28,18 +28,18 @@ class FragmentFull:BaseFragment(R.layout.fragment_full){
         setUpObserves()
         with(binding){
             val sdf = SimpleDateFormat("dd.MM.yyyy")
-            tvSetData.text=sdf.format(Calendar.getInstance().time).toString()
-            tvGetData.text=sdf.format(Calendar.getInstance().time).toString()
+            tvSetDate.text=sdf.format(Calendar.getInstance().time).toString()
+            tvGetDate.text=sdf.format(Calendar.getInstance().time).toString()
             btnPlus.onClick {
                 if(actvName.text.isNotEmpty()&&etSum.text!!.isNotEmpty()){
                     customer.name=actvName.text.toString()
                     customer.sum=etSum.text.toString().toLong()
                     customer.comment=etComment.text.toString()
                     customer.phoneNumber=etPhoneNumber.text.toString()
-                    customer.setData=tvSetData.text.toString()
+                    customer.setDate=tvSetDate.text.toString()
 
-                    val date = sdf.parse(tvGetData.text.toString())
-                    customer.getData = (date.time)/1000
+                    val date = sdf.parse(tvGetDate.text.toString())
+                    customer.getDate = (date.time)/1000
 
                     viewModel.addContact(customer)
                 }else{
@@ -54,17 +54,17 @@ class FragmentFull:BaseFragment(R.layout.fragment_full){
                     }
                 }
             }
-            tvSetData.onClick {
+            tvSetDate.onClick {
                 val dialog= CalendarDialog(requireContext())
                 dialog.getData {
-                    tvSetData.text= it
+                    tvSetDate.text= it
                 }
                 dialog.show()
             }
-            tvGetData.onClick {
+            tvGetDate.onClick {
                 val dialog= CalendarDialog(requireContext())
                 dialog.getData {
-                    tvGetData.text=it
+                    tvGetDate.text=it
                 }
                 dialog.show()
             }

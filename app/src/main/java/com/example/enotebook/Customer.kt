@@ -6,8 +6,8 @@ data class Customer(
         var sum:Long=0,
         var comment:String="",
         var phoneNumber:String="",
-        var getData:Long=0,
-        var setData:String="",
-        var changeData:String="",
+        var getDate:Long=0,
+        var setDate:String="",
+        var changeDate:String="",
         var isChecked:Boolean=false
 )

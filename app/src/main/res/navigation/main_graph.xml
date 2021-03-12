@@ -19,6 +19,9 @@
         <argument
             android:name="name"
             app:argType="string" />
+        <action
+            android:id="@+id/action_reportFragment_to_personFragment"
+            app:destination="@id/personFragment" />
     </fragment>
     <fragment
         android:id="@+id/smsListName"
@@ -34,6 +37,17 @@
         android:name="com.example.enotebook.screens.main.history.HistoryFragment"
         android:label="HistoryFragment"
         tools:layout="@layout/fragment_history">
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/personFragment"
+        android:name="com.example.enotebook.screens.main.customer.count.PersonFragment"
+        android:label="PersonFragment">
         <argument
             android:name="id"
             app:argType="string" />

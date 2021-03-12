@@ -13,7 +13,7 @@ class HistoryAdapter:RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
         fun populateModel(model:Customer?){
             binding.tvComment.text=model!!.comment
             binding.tvNumber.text=model.phoneNumber
-            binding.tvChangeData.text=model.changeData
+            binding.tvChangeData.text=model.changeDate
             binding.tvSum.text=model.sum.toString()
         }
     }

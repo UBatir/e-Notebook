@@ -17,7 +17,7 @@ class SmsListNameAdapter:RecyclerView.Adapter<SmsListNameAdapter.SmsListNameView
                 tvSum.text=model.sum.toString()
                 tvNumber.text=model.phoneNumber
                 tvComment.text=model.comment
-                tvGetData.text=model.setData
+                tvGetDate.text=model.setDate
                 checkbox.isChecked = model.isChecked
                 checkbox.onClick {
                         model.isChecked=!model.isChecked

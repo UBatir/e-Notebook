@@ -5,7 +5,6 @@ import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import com.example.enotebook.Customer
 import com.example.enotebook.R
 import com.example.enotebook.databinding.FragmentHistoryBinding
 import com.example.enotebook.screens.extentions.BaseFragment

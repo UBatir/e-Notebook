@@ -27,7 +27,7 @@ object SmsHelper {
                     try {
                 val sms = SmsManager.getDefault()
                 sentPendingIntents.add(sentPI)
-                val mSMSMessage: ArrayList<String> = sms.divideMessage("$text \n Qariz mug'dari: ${sum[cnt]}  \n Kelisilgen waqit: ${data[cnt]}")
+                val mSMSMessage: ArrayList<String> = sms.divideMessage("$text \n Qariz mug'dari: ${sum[cnt]} \n Kelisilgen waqit: ${data[cnt]}")
                 sms.sendMultipartTextMessage(numbers[cnt++], null, mSMSMessage,
                     sentPendingIntents, deliveredPendingIntents)
                 if (cnt == numbers.size){

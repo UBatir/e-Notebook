@@ -2,6 +2,7 @@ package com.example.enotebook.screens.main.customer.addCustomer
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.enotebook.Customer
 import com.example.enotebook.R
@@ -27,7 +28,7 @@ class FragmentInstallment:BaseFragment(R.layout.fragment_installment) {
         setUpObserves()
         with(binding){
             val sdf = SimpleDateFormat("dd.MM.yyyy")
-            tvSetData.text=sdf.format(Calendar.getInstance().time).toString()
+            tvSetDate.text=sdf.format(Calendar.getInstance().time).toString()
             btnPlus.onClick {
                 if(actvName.text.isNotEmpty()&&etSum.text!!.isNotEmpty()){
                     val n=etCountMonths.text.toString().toInt()
@@ -35,13 +36,13 @@ class FragmentInstallment:BaseFragment(R.layout.fragment_installment) {
                     customer.sum=etSum.text.toString().toLong()
                     customer.comment=etComment.text.toString()
                     customer.phoneNumber=etPhoneNumber.text.toString()
-                    customer.setData=tvSetData.text.toString()
-                    val date = sdf.parse(tvSetData.text.toString())
+                    customer.setDate=tvSetDate.text.toString()
+                    val date = sdf.parse(tvSetDate.text.toString())
                     viewModel.addContact(customer)
                     for (i in 1 .. n){
                         customer.sum=etSum.text.toString().toLong()/n
-                        customer.getData = (date.time)/1000+i*86400
-                        //viewModel.addInstallment(customer)
+                        customer.getDate = (date.time)/1000+i*2678400
+                        viewModel.addInstallment(customer)
                     }
                 }else{
                     if(actvName.text.isEmpty()){
@@ -55,10 +56,10 @@ class FragmentInstallment:BaseFragment(R.layout.fragment_installment) {
                     }
                 }
             }
-            tvSetData.onClick {
+            tvSetDate.onClick {
                 val dialog= CalendarDialog(requireContext())
                 dialog.getData {
-                    tvSetData.text= it
+                    tvSetDate.text= it
                 }
                 dialog.show()
             }
@@ -73,7 +74,8 @@ class FragmentInstallment:BaseFragment(R.layout.fragment_installment) {
                 }
                 ResourceState.SUCCESS -> {
                     toastLN("Added new person")
-                    val action = AddCustomerFragmentDirections.actionAddCustomerFragmentToMainFragment()
+                    val action =
+                        AddCustomerFragmentDirections.actionAddCustomerFragmentToMainFragment()
                     findNavController().navigate(action)
                 }
                 ResourceState.ERROR -> {

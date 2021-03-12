@@ -1,9 +1,7 @@
 package com.example.enotebook.screens.sms
 
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.enotebook.R
@@ -50,7 +48,7 @@ class SmsListNameFragment:BaseFragment(R.layout.fragment_sms_list_name) {
                     text,
                     mAdapter.models.filter { it.isChecked }.map { it.phoneNumber },
                     mAdapter.models.filter { it.isChecked }.map { it.sum.toString() },
-                    mAdapter.models.filter { it.isChecked }.map { getDateFromUTCTimestamp(it.getData) },
+                    mAdapter.models.filter { it.isChecked }.map { getDateFromUTCTimestamp(it.getDate) },
                     requireContext()
                 )
             }else{

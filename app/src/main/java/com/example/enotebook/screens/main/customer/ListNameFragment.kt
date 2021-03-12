@@ -44,7 +44,7 @@ class ListNameFragment : BaseFragment(R.layout.fragment_list_name) {
         }
         binding.recyclerView.adapter=adapter
         adapter.setOnClickItemListener {
-            val action=ListNameFragmentDirections.actionReportFragmentToHistoryFragment(it.id,it.name)
+            val action=ListNameFragmentDirections.actionReportFragmentToPersonFragment(it.id,it.name)
             navController.navigate(action)
         }
         binding.etSearch.addTextChangedListener(object : TextWatcher {
