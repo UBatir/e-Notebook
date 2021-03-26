@@ -2,14 +2,16 @@ package com.example.enotebook.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.preference.PreferenceManager
 
-class Settings(context:Context) {
+class SharedPreferences(context:Context) {
     companion object{
         const val IS_APP_FIRST_LAUNCH="isAppFirstLaunch"
         const val PASSWORD="password"
+        const val LANGUAGE = "currentLanguage"
     }
 
-    private val sharedPreferences: SharedPreferences=context.getSharedPreferences("PasswordSharePreference",Context.MODE_PRIVATE)
+    private val sharedPreferences: SharedPreferences =context.getSharedPreferences("PasswordSharePreference",Context.MODE_PRIVATE)
 
     fun setFirstLaunched(){
         sharedPreferences.edit().putBoolean(IS_APP_FIRST_LAUNCH,false).apply()
@@ -23,4 +25,12 @@ class Settings(context:Context) {
     }
 
     fun getPassword():String=sharedPreferences.getString(PASSWORD,"")?:""
+
+
+    fun setLanguage(language: String) {
+        sharedPreferences.edit().putString(LANGUAGE, language).apply()
+    }
+
+    fun getLanguage() : String = sharedPreferences.getString(LANGUAGE, "") ?:"ru"
+
 }

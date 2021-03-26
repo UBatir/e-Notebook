@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Qarız Daptershesi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="email_not_entered_error">Iltimas, logindı kirgizıń!</string>
+    <string name="enter_your_password_error">Iltimas, paroldı kirgizıń!</string>
+    <string name="enter_amount">"Iltimas, qarız muǵdarın kirgizıń!"</string>
+    <string name="enter_number">"Iltimas, telefon nomerin kirgizıń!"</string>
+    <string name="enter_name">"Iltimas, F.I.O. kirgizıń!"</string>
+    <string name="spisok">Dizim</string>
+    <string name="sms">SMS</string>
+    <string name="search">Izlew...</string>
+    <string name="settings">Sazlamalar</string>
+    <string name="selectLanguage">Tildı saylań</string>
+    <string name="save">Saqlaw</string>
+    <string name="password">Parol</string>
+    <string name="login">Login</string>
+    <string name="registration">Registraciya</string>
+    <string name="phone_number">Telefon nomer</string>
+    <string name="name">Atı</string>
+    <string name="sum">Summa</string>
+    <string name="add">Qosıw</string>
+    <string name="comment">Qosımsha maǵlıwmat</string>
+    <string name="get_time">Qarız alǵan waqıt:</string>
+    <string name="set_time">Qarız alǵan waqıt:</string>
+    <string name="count_months">Aylar sanı:</string>
+    <string name="all">Hámmesi:</string>
+</resources>

@@ -1,7 +1,6 @@
 package com.example.enotebook.screens.sms
 
 import android.content.Context
-import android.text.format.DateFormat.format
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,9 +8,6 @@ import com.example.enotebook.Customer
 import com.example.enotebook.screens.extentions.Resource
 import com.example.enotebook.screens.helpers.FireStoreHelper
 import com.example.enotebook.screens.helpers.SmsHelper
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.*
 
 class SmsListNameViewModel(private val fireStoreHelper: FireStoreHelper):ViewModel() {
 
@@ -28,17 +24,17 @@ class SmsListNameViewModel(private val fireStoreHelper: FireStoreHelper):ViewMod
     }
 
     fun sendSms(
-        text: String,
-        numbers: List<String>,
-        sum: List<String>,
-        data: List<String>,
-        context: Context
+            name: List<String>,
+            numbers: List<String>,
+            sum: List<String>,
+            date: List<String>,
+            context: Context
     ) {
-        SmsHelper.text = text
+        SmsHelper.name= name as MutableList<String>
         SmsHelper.numbers = numbers as MutableList<String>
         SmsHelper.sum = sum as MutableList<String>
-        SmsHelper.data = data as MutableList<String>
+        SmsHelper.date = date as MutableList<String>
         SmsHelper.context = context
-        SmsHelper.send(text)
+        SmsHelper.send()
     }
 }

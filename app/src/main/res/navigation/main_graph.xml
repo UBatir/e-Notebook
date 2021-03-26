@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_reportFragment_to_personFragment"
             app:destination="@id/personFragment" />
+        <action
+            android:id="@+id/action_reportFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/smsListName"
@@ -54,5 +57,12 @@
         <argument
             android:name="name"
             app:argType="string" />
+        <argument
+            android:name="total"
+            app:argType="long" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.enotebook.screens.main.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

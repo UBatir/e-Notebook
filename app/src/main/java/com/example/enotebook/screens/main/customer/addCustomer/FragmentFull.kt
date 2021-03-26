@@ -39,7 +39,7 @@ class FragmentFull:BaseFragment(R.layout.fragment_full){
                     customer.setDate=tvSetDate.text.toString()
 
                     val date = sdf.parse(tvGetDate.text.toString())
-                    customer.getDate = (date.time)/1000
+                    customer.getDate=(date.time)/1000
 
                     viewModel.addContact(customer)
                 }else{
@@ -78,7 +78,6 @@ class FragmentFull:BaseFragment(R.layout.fragment_full){
 
                 }
                 ResourceState.SUCCESS -> {
-                    toastLN("Kontakt qosildi!")
                     val action =
                             AddCustomerFragmentDirections.actionAddCustomerFragmentToMainFragment()
                     findNavController().navigate(action)

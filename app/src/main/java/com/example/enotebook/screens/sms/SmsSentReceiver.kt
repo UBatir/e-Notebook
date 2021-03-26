@@ -12,20 +12,20 @@ class SmsSentReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         when (resultCode) {
             Activity.RESULT_OK -> {
-                SmsHelper.send(SmsHelper.text)
+                SmsHelper.send()
                 Toast.makeText(context, "Sms ketti", Toast.LENGTH_SHORT).show()
             }
             SmsManager.RESULT_ERROR_GENERIC_FAILURE -> {
-                SmsHelper.send(SmsHelper.text)
+                SmsHelper.send()
                 Toast.makeText(context, "Sms ketti", Toast.LENGTH_SHORT).show()
             }
 
             SmsManager.RESULT_ERROR_NO_SERVICE -> {
-                SmsHelper.send(SmsHelper.text)
+                SmsHelper.send()
                 Toast.makeText(context, "Sms ketti", Toast.LENGTH_SHORT).show()
             }
             SmsManager.RESULT_ERROR_NULL_PDU -> {
-                SmsHelper.send(SmsHelper.text)
+                SmsHelper.send()
                 Toast.makeText(context, "Sms ketti", Toast.LENGTH_SHORT).show()
             }
             else -> {}

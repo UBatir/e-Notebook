@@ -22,8 +22,8 @@ class PersonViewModel(private val fireStoreHelper: FireStoreHelper): ViewModel()
         })
     }
 
-    fun deleteContact(customer: Customer){
-        fireStoreHelper.deleteContact(customer,{
+    fun deleteContact(customer: Customer,total:Long){
+        fireStoreHelper.deleteFromPerson(customer,total,{
             _listPerson.value=Resource.success(null)
         },{
             _listPerson.value=Resource.error(it)

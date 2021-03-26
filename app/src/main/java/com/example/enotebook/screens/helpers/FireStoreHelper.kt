@@ -26,7 +26,7 @@ class FireStoreHelper(private val auth: FirebaseAuth, private val db: FirebaseFi
         map["changeDate"]= SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault()).format(Calendar.getInstance().time).toString()
         db.collection("contacts").document(auth.currentUser!!.uid).collection("data").document(map["id"].toString()).set(map)
         db.collection("contacts").document(auth.currentUser!!.uid).collection("history").document().set(map)
-        db.collection("contacts").document(auth.currentUser!!.uid).collection("installment").document().set(map)
+        db.collection("contacts").document(auth.currentUser!!.uid).collection("installment").document(map["id"].toString()).set(map)
             .addOnSuccessListener {
                 onSuccess.invoke()
             }
@@ -44,7 +44,7 @@ class FireStoreHelper(private val auth: FirebaseAuth, private val db: FirebaseFi
         map["setDate"]=customer.setDate
         map["phoneNumber"]=customer.phoneNumber
         map["id"]=customer.id
-        db.collection("contacts").document(auth.currentUser!!.uid).collection("installment").document().set(map)
+        db.collection("contacts").document(auth.currentUser!!.uid).collection("installment").document(customer.getDate.toString()).set(map)
                 .addOnSuccessListener {
                     onSuccess.invoke()
                 }
@@ -86,22 +86,6 @@ class FireStoreHelper(private val auth: FirebaseAuth, private val db: FirebaseFi
 
     }
 
-    fun getListNameFromInstall(onSuccess: (list: List<Customer>) -> Unit, onFailure: (msg: String) -> Unit){
-        val time=System.currentTimeMillis()/1000+259200
-        db.collection("contacts").document(auth.currentUser!!.uid).collection("installment").whereLessThanOrEqualTo("getDate", time).get()
-            .addOnSuccessListener { collection->
-                if(collection.documents.isNotEmpty()){
-                    onSuccess.invoke(collection.documents.map {
-                        it.toObject(Customer::class.java)!!
-                    })
-                }else{
-                    onSuccess.invoke(listOf())
-                }
-            }
-            .addOnFailureListener {
-                onFailure.invoke(it.localizedMessage)
-            }
-    }
     fun getListName(onSuccess: (list: List<Customer>) -> Unit, onFailure: (msg: String) -> Unit){
         val time=System.currentTimeMillis()/1000+259200
         db.collection("contacts").document(auth.currentUser!!.uid).collection("data").whereLessThanOrEqualTo("getDate", time).get()
@@ -121,7 +105,6 @@ class FireStoreHelper(private val auth: FirebaseAuth, private val db: FirebaseFi
 
     fun deleteContact(customer: Customer, onSuccess: () -> Unit, onFailure: (msg: String) -> Unit){
         db.collection("contacts").document(auth.currentUser!!.uid).collection("data").document(customer.id).delete()
-        db.collection("contacts").document(auth.currentUser!!.uid).collection("installment").document(customer.id).delete()
                 .addOnSuccessListener {
                     onSuccess.invoke()
                 }
@@ -180,5 +163,19 @@ class FireStoreHelper(private val auth: FirebaseAuth, private val db: FirebaseFi
                 onFailure.invoke(it.localizedMessage)
             }
 
+    }
+
+    fun deleteFromPerson(customer: Customer,total:Long,onSuccess: () -> Unit,onFailure: (msg: String) -> Unit){
+        val update= hashMapOf<String, Any>(
+                "sum" to (total-customer.sum)
+        )
+        db.collection("contacts").document(auth.currentUser!!.uid).collection("data").document(customer.id).update(update)
+        db.collection("contacts").document(auth.currentUser!!.uid).collection("installment").document(customer.getDate.toString()).delete()
+                .addOnSuccessListener {
+                    onSuccess.invoke()
+                }
+                .addOnFailureListener {
+                    onFailure.invoke(it.localizedMessage)
+                }
     }
 }

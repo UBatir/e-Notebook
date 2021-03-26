@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_theme"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".screens.auth.signIn.SignInFragment">
 
@@ -13,6 +12,7 @@
         android:layout_height="150dp"
         tools:ignore="MissingConstraints"
         android:src="@drawable/book"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,57 +26,62 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivBook"
-        app:layout_constraintBottom_toTopOf="@id/etLogin"
         android:text="Login"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"/>
 
-    <ImageView
-        android:id="@+id/ivPerson"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        android:src="@drawable/ic_person"
-        android:layout_marginStart="8dp"
+        android:id="@+id/tvInputLayoutLogin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/etLogin"
-        app:layout_constraintTop_toTopOf="@id/etLogin"
-        app:layout_constraintBottom_toBottomOf="@id/etLogin"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLogin"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
+        android:hint="@string/login"
+        app:counterEnabled="true"
+        app:counterMaxLength="25"
+        app:helperText="Required*"
+        app:endIconMode="clear_text"
+        app:helperTextTextColor="@android:color/holo_red_light"
+        app:startIconDrawable="@drawable/ic_person"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
+        <EditText
+            android:id="@+id/etLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:maxLength="26"/>
 
-    <EditText
-        android:id="@+id/etLogin"
-        android:hint="Login"
-        style="@style/editText"
-        android:background="@drawable/background_login"
-        android:inputType="textEmailAddress"
-        app:layout_editor_absoluteX="@dimen/standard_margin"
-        app:layout_constraintStart_toEndOf="@id/ivPerson"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-
-    <ImageView
-        android:id="@+id/ivLock"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvInputLayoutPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        android:src="@drawable/ic_lock"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/etPassword"
-        app:layout_constraintBottom_toBottomOf="@id/etPassword"/>
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
+        app:helperText="Required*"
+        app:helperTextTextColor="@android:color/holo_red_light"
+        app:startIconDrawable="@drawable/ic_lock"
+        android:hint="@string/password"
+        app:endIconMode="password_toggle"
+        app:layout_constraintStart_toStartOf="@id/tvInputLayoutLogin"
+        app:layout_constraintEnd_toEndOf="@id/tvInputLayoutLogin"
+        app:layout_constraintTop_toBottomOf="@id/tvInputLayoutLogin">
 
-    <EditText
-        android:id="@+id/etPassword"
-        app:layout_editor_absoluteX="@dimen/standard_margin"
-        app:layout_constraintStart_toEndOf="@id/ivLock"
-        app:layout_constraintTop_toBottomOf="@id/etLogin"
-        android:hint="Password"
-        android:background="@drawable/background_password"
-        tools:ignore="TextFields"
-        style="@style/editText" />
+        <EditText
+            android:id="@+id/etPassword"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ImageButton
         android:id="@+id/btnLogin"
@@ -84,19 +89,18 @@
         android:layout_height="52dp"
         android:background="@drawable/background_button_sign_in"
         android:src="@drawable/ic_sing_in"
-        app:layout_constraintStart_toEndOf="@id/etLogin"
-        app:layout_constraintEnd_toEndOf="@id/etPassword"
-        app:layout_constraintTop_toBottomOf="@id/etLogin"
-        app:layout_constraintBottom_toTopOf="@id/etPassword" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSignUp"/>
 
     <TextView
         android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registration"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/registration"
+        android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etPassword"
+        app:layout_constraintTop_toBottomOf="@id/tvInputLayoutPassword"
         android:layout_marginTop="16dp"/>
 
     <ProgressBar

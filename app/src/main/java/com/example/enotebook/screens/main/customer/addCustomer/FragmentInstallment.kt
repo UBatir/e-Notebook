@@ -2,7 +2,6 @@ package com.example.enotebook.screens.main.customer.addCustomer
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.enotebook.Customer
 import com.example.enotebook.R
@@ -17,7 +16,7 @@ import java.util.*
 
 class FragmentInstallment:BaseFragment(R.layout.fragment_installment) {
 
-    private lateinit var binding:FragmentInstallmentBinding
+    private lateinit var binding: FragmentInstallmentBinding
     private val viewModel:AddCustomerViewModel by viewModel()
     var customer= Customer()
 
@@ -39,11 +38,7 @@ class FragmentInstallment:BaseFragment(R.layout.fragment_installment) {
                     customer.setDate=tvSetDate.text.toString()
                     val date = sdf.parse(tvSetDate.text.toString())
                     viewModel.addContact(customer)
-                    for (i in 1 .. n){
-                        customer.sum=etSum.text.toString().toLong()/n
-                        customer.getDate = (date.time)/1000+i*2678400
-                        viewModel.addInstallment(customer)
-                    }
+                    viewModel.addInstallment(customer,n,date)
                 }else{
                     if(actvName.text.isEmpty()){
                         actvName.error=getString(R.string.enter_name)
@@ -73,10 +68,7 @@ class FragmentInstallment:BaseFragment(R.layout.fragment_installment) {
 
                 }
                 ResourceState.SUCCESS -> {
-                    toastLN("Added new person")
-                    val action =
-                        AddCustomerFragmentDirections.actionAddCustomerFragmentToMainFragment()
-                    findNavController().navigate(action)
+                    findNavController().popBackStack()
                 }
                 ResourceState.ERROR -> {
                     toastLN(it.message)

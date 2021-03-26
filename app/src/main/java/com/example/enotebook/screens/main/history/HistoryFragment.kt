@@ -10,6 +10,7 @@ import com.example.enotebook.databinding.FragmentHistoryBinding
 import com.example.enotebook.screens.extentions.BaseFragment
 import com.example.enotebook.screens.extentions.ResourceState
 import com.example.enotebook.screens.extentions.onClick
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -19,7 +20,7 @@ class HistoryFragment:BaseFragment(R.layout.fragment_history) {
     private lateinit var navController: NavController
     private val viewModel:HistoryViewModel by viewModel()
     private val safeArgs: HistoryFragmentArgs by navArgs()
-    private val adapter=HistoryAdapter()
+    private val adapter:HistoryAdapter by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

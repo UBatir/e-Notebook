@@ -39,7 +39,8 @@ class PersonFragment:BaseFragment(R.layout.person_fragment) {
             dialog.setTitle("Tolendi")
             dialog.setMessage("Bul kontakt belgilengen summani toledima?")
             dialog.setPositiveButton("AWA") { _, _ ->
-                viewModel.deleteContact(customer)
+                customer.id=safeArgs.id
+                viewModel.deleteContact(customer,safeArgs.total)
                 adapter.delete(position)
                 adapter.notifyDataSetChanged()
                 if (adapter.models.isEmpty()){

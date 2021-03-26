@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Книга долгов</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="email_not_entered_error">Пожалуйста, введите логин!</string>
+    <string name="enter_your_password_error">Пожалуйста, введите пароль!</string>
+    <string name="enter_amount">"Пожалуйста, введите сумму!"</string>
+    <string name="enter_number">"Пожалуйства, введите телефон номер!"</string>
+    <string name="enter_name">"Пожалуйста, введите имя!"</string>
+    <string name="spisok">Список</string>
+    <string name="sms">СМС</string>
+    <string name="search">Поиск...</string>
+    <string name="settings">Настройки</string>
+    <string name="selectLanguage">Выберите языке</string>
+    <string name="save">Сохранить</string>
+    <string name="password">Пароль</string>
+    <string name="login">Логин</string>
+    <string name="registration">Регистрация</string>
+    <string name="phone_number">Телефон номер</string>
+    <string name="name">Имя</string>
+    <string name="sum">Сумма</string>
+    <string name="add">Добавить</string>
+    <string name="comment">Дополнительная информация</string>
+    <string name="get_time">Время взятия долга:</string>
+    <string name="set_time">Время возврата долга:</string>
+    <string name="count_months">Количество месяцев:</string>
+    <string name="all">Все:</string>
+</resources>

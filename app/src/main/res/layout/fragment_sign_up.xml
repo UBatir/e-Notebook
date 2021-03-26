@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_theme"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".screens.auth.signUp.SignUpFragment">
 
@@ -16,6 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp"
         app:layout_constraintBottom_toTopOf="@id/tvRegister"/>
 
     <TextView
@@ -26,54 +26,62 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivBook"
-        app:layout_constraintBottom_toTopOf="@id/etLogin"
         android:text="Register"
+        android:layout_marginTop="@dimen/standard_margin"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"/>
 
-    <ImageView
-        android:id="@+id/ivPerson"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvInputLayoutLogin"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        android:src="@drawable/ic_person"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
+        android:hint="@string/login"
+        app:helperText="Required*"
+        app:counterEnabled="true"
+        app:counterMaxLength="25"
+        app:startIconDrawable="@drawable/ic_person"
+        app:endIconMode="clear_text"
+        app:helperTextTextColor="@android:color/holo_red_light"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/etLogin"
-        app:layout_constraintTop_toTopOf="@id/etLogin"
-        app:layout_constraintBottom_toBottomOf="@id/etLogin"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRegister">
 
-    <EditText
-        android:id="@+id/etLogin"
-        android:hint="Login"
-        style="@style/editText"
-        android:background="@drawable/background_login"
-        android:inputType="textEmailAddress"
-        app:layout_constraintStart_toEndOf="@id/ivPerson"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        <EditText
+            android:id="@+id/etLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:maxLength="26"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-
-    <ImageView
-        android:id="@+id/ivLock"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@id/tvInputLayoutPassword"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        android:src="@drawable/ic_lock"
-        android:layout_marginStart="8dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        app:startIconDrawable="@drawable/ic_lock"
+        app:helperText="Required*"
+        app:endIconMode="password_toggle"
+        app:helperTextTextColor="@android:color/holo_red_light"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/etPassword"
-        app:layout_constraintBottom_toBottomOf="@id/etPassword"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/password"
+        app:layout_constraintTop_toBottomOf="@id/tvInputLayoutLogin">
 
-    <EditText
-        android:id="@+id/etPassword"
-        style="@style/editText"
-        app:layout_constraintStart_toEndOf="@id/ivLock"
-        app:layout_constraintTop_toBottomOf="@id/etLogin"
-        android:background="@drawable/background_password"
-        android:hint="Password"
-        android:autofillHints="" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etPassword"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ImageButton
         android:id="@+id/btnSignUp"
@@ -81,10 +89,10 @@
         android:layout_height="52dp"
         android:background="@drawable/background_button_sign_in"
         android:src="@drawable/ic_done"
-        app:layout_constraintStart_toEndOf="@id/etLogin"
-        app:layout_constraintEnd_toEndOf="@id/etPassword"
-        app:layout_constraintTop_toBottomOf="@id/etLogin"
-        app:layout_constraintBottom_toTopOf="@id/etPassword" />
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvInputLayoutPassword" />
 
     <ProgressBar
         android:id="@+id/loading"

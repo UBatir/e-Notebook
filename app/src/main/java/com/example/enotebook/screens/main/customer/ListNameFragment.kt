@@ -13,9 +13,10 @@ import com.example.enotebook.R
 import com.example.enotebook.databinding.FragmentListNameBinding
 import com.example.enotebook.screens.extentions.BaseFragment
 import com.example.enotebook.screens.extentions.ResourceState
+import com.example.enotebook.screens.extentions.onClick
 import com.example.enotebook.screens.main.customer.dialogs.ChangeBalanceDialog
 import com.example.enotebook.screens.main.customer.dialogs.RenameDialog
-import com.example.enotebook.utils.Settings
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 import kotlin.collections.ArrayList
@@ -25,7 +26,7 @@ class ListNameFragment : BaseFragment(R.layout.fragment_list_name) {
     private lateinit var binding: FragmentListNameBinding
     private lateinit var navController: NavController
     private val viewModel: ListNameViewModel by viewModel()
-    private val adapter=ListNameAdapter()
+    private val adapter: ListNameAdapter by inject()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,7 +45,7 @@ class ListNameFragment : BaseFragment(R.layout.fragment_list_name) {
         }
         binding.recyclerView.adapter=adapter
         adapter.setOnClickItemListener {
-            val action=ListNameFragmentDirections.actionReportFragmentToPersonFragment(it.id,it.name)
+            val action=ListNameFragmentDirections.actionReportFragmentToPersonFragment(it.id,it.name,it.sum)
             navController.navigate(action)
         }
         binding.etSearch.addTextChangedListener(object : TextWatcher {
@@ -62,6 +63,10 @@ class ListNameFragment : BaseFragment(R.layout.fragment_list_name) {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
             })
+        binding.ivSettings.onClick {
+            val action=ListNameFragmentDirections.actionReportFragmentToSettingsFragment()
+            navController.navigate(action)
+        }
 
     }
 

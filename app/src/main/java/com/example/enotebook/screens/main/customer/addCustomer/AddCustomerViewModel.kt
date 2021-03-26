@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.example.enotebook.Customer
 import com.example.enotebook.screens.extentions.Resource
 import com.example.enotebook.screens.helpers.FireStoreHelper
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddCustomerViewModel(private val fireStoreHelper: FireStoreHelper):ViewModel() {
 
@@ -21,12 +23,16 @@ class AddCustomerViewModel(private val fireStoreHelper: FireStoreHelper):ViewMod
         })
     }
 
-    fun addInstallment(customer: Customer){
-        _contactSet.value=Resource.loading()
-        fireStoreHelper.addInstallment(customer,{
-            _contactSet.value=Resource.success(null)
-        },{
-            _contactSet.value=Resource.error(it)
-        })
+    fun addInstallment(customer: Customer,n:Int,date:Date){
+        for (i in 1 .. n){
+            customer.sum=customer.sum/n
+            customer.getDate = (date.time)/1000+i*2678400
+            _contactSet.value=Resource.loading()
+            fireStoreHelper.addInstallment(customer,{
+                _contactSet.value=Resource.success(null)
+            },{
+                _contactSet.value=Resource.error(it)
+            })
+        }
     }
 }

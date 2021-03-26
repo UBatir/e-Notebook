@@ -8,7 +8,7 @@ import androidx.navigation.Navigation
 import com.example.enotebook.R
 import com.example.enotebook.databinding.FragmentPasswordBinding
 import com.example.enotebook.screens.extentions.BaseFragment
-import com.example.enotebook.utils.Settings
+import com.example.enotebook.utils.SharedPreferences
 import com.google.firebase.auth.FirebaseAuth
 import com.hanks.passcodeview.PasscodeView.PasscodeViewListener
 import org.koin.android.ext.android.inject
@@ -17,17 +17,16 @@ import org.koin.android.ext.android.inject
 class PasswordFragment:BaseFragment(R.layout.fragment_password) {
     private lateinit var binding: FragmentPasswordBinding
     private lateinit var navController: NavController
-    private lateinit var settings: Settings
+    private val sharedPreferences: SharedPreferences by inject()
     private val auth: FirebaseAuth by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        settings = Settings(requireContext())
         val _binding = FragmentPasswordBinding.bind(view)
         binding = _binding
         navController = Navigation.findNavController(view)
-        if (!settings.isAppFirstLaunched()) {
-            binding.passcodeView.setLocalPasscode(settings.getPassword()).listener =
+        if (!sharedPreferences.isAppFirstLaunched()) {
+            binding.passcodeView.setLocalPasscode(sharedPreferences.getPassword()).listener =
                 object : PasscodeViewListener {
                     override fun onFail() {
                         Toast.makeText(requireContext(), "Wrong!!", Toast.LENGTH_SHORT).show()
@@ -44,7 +43,7 @@ class PasswordFragment:BaseFragment(R.layout.fragment_password) {
                 }
 
                 override fun onSuccess(number: String) {
-                    settings.setPassword(number)
+                    sharedPreferences.setPassword(number)
                     checkAccount()
                 }
             }

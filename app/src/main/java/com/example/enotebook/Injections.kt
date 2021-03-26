@@ -5,15 +5,20 @@ import com.example.enotebook.screens.auth.signUp.SignUpViewModel
 import com.example.enotebook.screens.helpers.AuthHelper
 import com.example.enotebook.screens.helpers.FireStoreHelper
 import com.example.enotebook.screens.helpers.SmsHelper
+import com.example.enotebook.screens.main.customer.ListNameAdapter
 import com.example.enotebook.screens.main.customer.ListNameViewModel
 import com.example.enotebook.screens.main.customer.addCustomer.AddCustomerViewModel
 import com.example.enotebook.screens.main.customer.count.PersonFragment
 import com.example.enotebook.screens.main.customer.count.PersonViewModel
+import com.example.enotebook.screens.main.history.HistoryAdapter
 import com.example.enotebook.screens.main.history.HistoryViewModel
+import com.example.enotebook.screens.sms.SmsListNameAdapter
 import com.example.enotebook.screens.sms.SmsListNameViewModel
+import com.example.enotebook.utils.SharedPreferences
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessaging
+import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -27,6 +32,7 @@ val helperModule = module {
     single { AuthHelper(get()) }
     single { FireStoreHelper(get(),get()) }
     single { SmsHelper }
+    single { SharedPreferences(androidApplication().applicationContext) }
 }
 
 val viewModelModule = module {
@@ -40,5 +46,7 @@ val viewModelModule = module {
 
 }
 val adapterModule = module {
-
+    single { ListNameAdapter() }
+    single { HistoryAdapter() }
+    single { SmsListNameAdapter() }
 }
