@@ -31,7 +31,11 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
         val resources = resources
         val dm = resources.displayMetrics
         val config = resources.configuration
-        config.setLocale(Locale(localeCode.toLowerCase(Locale.getDefault())))
+        if (localeCode.isEmpty()){
+            config.setLocale(Locale("ru".toLowerCase(Locale.getDefault())))
+        }else{
+            config.setLocale(Locale(localeCode.toLowerCase(Locale.getDefault())))
+        }
         resources.updateConfiguration(config, dm)
     }
 }

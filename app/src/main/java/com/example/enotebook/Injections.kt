@@ -15,6 +15,8 @@ import com.example.enotebook.screens.main.history.HistoryViewModel
 import com.example.enotebook.screens.sms.SmsListNameAdapter
 import com.example.enotebook.screens.sms.SmsListNameViewModel
 import com.example.enotebook.utils.SharedPreferences
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessaging
@@ -26,6 +28,13 @@ val firebaseModule = module {
     single { FirebaseAuth.getInstance() }
     single { FirebaseFirestore.getInstance() }
     single { FirebaseMessaging.getInstance() }
+    single {
+        GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(androidApplication().applicationContext.getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
+    }
+    single { GoogleSignIn.getClient(androidApplication().applicationContext, get()) }
 }
 
 val helperModule = module {

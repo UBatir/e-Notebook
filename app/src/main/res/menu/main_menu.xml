@@ -4,13 +4,13 @@
     <group>
         <item android:id="@+id/reportFragment"
             android:title="@string/spisok"
-            android:icon="@drawable/ic_group" />
+            android:icon="@drawable/ic_report_1" />
 
         <item android:id="@+id/deadlineListNamea"
             android:title=""/>
 
         <item android:id="@+id/smsListName"
             android:title="@string/sms"
-            android:icon="@drawable/ic_schedule_send" />
+            android:icon="@drawable/ic_sms" />
     </group>
 </menu>

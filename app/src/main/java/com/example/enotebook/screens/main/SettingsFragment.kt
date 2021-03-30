@@ -53,6 +53,7 @@ class SettingsFragment:BaseFragment(R.layout.fragment_settings) {
                 settings.setLanguage(language)
             }
             val refresh = Intent(requireContext(), MainActivity::class.java)
+            refresh.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(refresh)
         }
     }

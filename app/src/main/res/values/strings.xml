@@ -25,6 +25,11 @@
     <string name="set_time">Set time:</string>
     <string name="count_months">Count months:</string>
     <string name="all">All:</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="Required">Required*</string>
+    <string name="google_icon">google icon</string>
+    <string name="sign_in">Sign in:</string>
+    <string name="turnOn">Do turn on Internet</string>
 
     <string-array name="languages">
         <item>Qaraqalpaqsha</item>

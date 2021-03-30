@@ -1,6 +1,8 @@
 package com.example.enotebook.screens.helpers
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 
 class AuthHelper(private val auth:FirebaseAuth) {
     fun signUp(email: String, password: String,onSuccess:()->Unit,onFailure:(message:String)->Unit) {
@@ -23,4 +25,14 @@ class AuthHelper(private val auth:FirebaseAuth) {
             }
     }
 
+    fun signInWithGoogle(account: GoogleSignInAccount,onSuccess: () -> Unit,onFailure: (message: String) -> Unit){
+        val credential=GoogleAuthProvider.getCredential(account.idToken,null)
+        auth.signInWithCredential(credential)
+            .addOnSuccessListener {
+                onSuccess.invoke()
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
+    }
 }

@@ -1,8 +1,12 @@
 package com.example.enotebook.screens.main.customer.addCustomer
 
 import android.annotation.SuppressLint
+import android.database.Cursor
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.view.View
+import android.widget.AdapterView
+import android.widget.SimpleAdapter
 import androidx.navigation.fragment.findNavController
 import com.example.enotebook.Customer
 import com.example.enotebook.R
@@ -14,11 +18,15 @@ import com.example.enotebook.screens.main.customer.dialogs.CalendarDialog
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
+
 
 class FragmentFull:BaseFragment(R.layout.fragment_full){
     private lateinit var binding: FragmentFullBinding
     private val viewModel: AddCustomerViewModel by viewModel()
     var customer= Customer()
+    private lateinit var mAdapter: SimpleAdapter
+    private lateinit var storeContacts:ArrayList<Map<String,String>>
 
     @SuppressLint("SetTextI18n", "SimpleDateFormat")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -26,6 +34,26 @@ class FragmentFull:BaseFragment(R.layout.fragment_full){
         val _binding= FragmentFullBinding.bind(view)
         binding=_binding
         setUpObserves()
+        storeContacts= ArrayList()
+        getContactsIntoArrayList()
+        mAdapter= SimpleAdapter(
+                context, storeContacts, R.layout.auto_complete_tv, arrayOf("Name"),
+                intArrayOf(R.id.tvNameContact)
+        )
+        binding.actvName.setAdapter(mAdapter)
+        binding.actvName.setSelection(binding.actvName.text!!.length)
+
+
+        binding.actvName.onItemClickListener =
+                AdapterView.OnItemClickListener { av, _, index, _ ->
+                    val map = av.getItemAtPosition(index) as Map<*, *>
+                    val name = map["Name"]
+                    val phoneNumber=map["Number"]
+                    binding.actvName.setText("$name")
+                    binding.etPhoneNumber.setText("$phoneNumber")
+                    binding.actvName.setSelection(binding.actvName.text!!.length)
+                }
+
         with(binding){
             val sdf = SimpleDateFormat("dd.MM.yyyy")
             tvSetDate.text=sdf.format(Calendar.getInstance().time).toString()
@@ -69,6 +97,19 @@ class FragmentFull:BaseFragment(R.layout.fragment_full){
                 dialog.show()
             }
         }
+    }
+
+    private fun getContactsIntoArrayList() {
+        val cursor: Cursor? =requireActivity().contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null)
+        while (cursor!!.moveToNext()) {
+            val name = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
+            val phoneNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+            val map:MutableMap<String,String> = mutableMapOf()
+            map["Name"]=name
+            map["Number"]=phoneNumber
+            storeContacts.add(map)
+        }
+        cursor.close()
     }
 
     private fun setUpObserves() {
