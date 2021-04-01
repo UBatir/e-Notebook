@@ -30,6 +30,14 @@
     <string name="google_icon">google icon</string>
     <string name="sign_in">Sign in:</string>
     <string name="turnOn">Do turn on Internet</string>
+    <string name="history">History</string>
+    <string name="changeSum">Change balance</string>
+    <string name="Rename">Rename</string>
+    <string name="delete_contact">DeleteContact</string>
+    <string name="exit_from_account">Exit from account</string>
+    <string name="message_exit">Do you really exit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
     <string-array name="languages">
         <item>Qaraqalpaqsha</item>

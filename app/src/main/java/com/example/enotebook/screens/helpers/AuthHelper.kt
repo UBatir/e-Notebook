@@ -35,4 +35,8 @@ class AuthHelper(private val auth:FirebaseAuth) {
                 onFailure.invoke(it.localizedMessage)
             }
     }
+
+    fun signOut() {
+        auth.signOut()
+    }
 }

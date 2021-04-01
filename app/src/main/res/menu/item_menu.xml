@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group>
         <item android:id="@+id/itemHistory"
-            android:title="Tariyx"/>
+            android:title="@string/history"/>
 
         <item android:id="@+id/itemChangeBalance"
-            android:title="Summani ozgertiw"/>
+            android:title="@string/changeSum"/>
 
         <item android:id="@+id/itemRename"
-            android:title="Atin ozgertiw"/>
+            android:title="@string/Rename" />
 
         <item android:id="@+id/itemDelete"
-            android:title="Kontakti oshiriw" />
+            android:title="@string/delete_contact" />
     </group>
 </menu>

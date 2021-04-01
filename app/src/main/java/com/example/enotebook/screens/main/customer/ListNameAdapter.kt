@@ -32,7 +32,7 @@ class ListNameAdapter : RecyclerView.Adapter<ListNameAdapter.ListNameViewHolder>
         this.onItemClick=onItemClick
     }
 
-    private var onItemClickOptions: (view: View, customer: Customer,position:Int) -> Unit = { view: View, customer: Customer, i: Int -> }
+    private var onItemClickOptions: (view: View, customer: Customer,position:Int) -> Unit = { _: View, _: Customer, _: Int -> }
     fun setOnClickItemOptionsListener(onItemClickOptions: (view: View, customer: Customer,position:Int) -> Unit) {
         this.onItemClickOptions = onItemClickOptions
     }

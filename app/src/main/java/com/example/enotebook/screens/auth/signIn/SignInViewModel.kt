@@ -32,4 +32,8 @@ class SignInViewModel(private val authHelper: AuthHelper):ViewModel() {
             _signInGoogle.value=Resource.error(it)
         })
     }
+
+    fun signOut(){
+        authHelper.signOut()
+    }
 }

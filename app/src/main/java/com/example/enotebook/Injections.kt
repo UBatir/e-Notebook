@@ -28,12 +28,12 @@ val firebaseModule = module {
     single { FirebaseAuth.getInstance() }
     single { FirebaseFirestore.getInstance() }
     single { FirebaseMessaging.getInstance() }
-    single {
+    /*single {
         GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(androidApplication().applicationContext.getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build()
-    }
+    }*/
     single { GoogleSignIn.getClient(androidApplication().applicationContext, get()) }
 }
 

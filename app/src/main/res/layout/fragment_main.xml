@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:fabCradleMargin="@dimen/little_standard_margin"
+        app:backgroundTint="#E1D7F5"
         app:fabCradleRoundedCornerRadius="0dp"
         app:fabCradleVerticalOffset="@dimen/little_standard_margin">
 
@@ -44,6 +45,8 @@
         android:src="@drawable/ic_add"
         app:fabCustomSize="60dp"
         app:layout_anchor="@id/babMain"
+        android:backgroundTint="#9287A8"
+        android:background="#9287A8"
         app:tint="@color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -29,4 +29,13 @@
     <string name="Required">Talap etiledi*</string>
     <string name="google_icon">google icon</string>
     <string name="sign_in">Kiriw:</string>
+    <string name="turnOn">Internettı qosıńiz</string>
+    <string name="history">Tariyx</string>
+    <string name="changeSum">Summanı ózgertiw</string>
+    <string name="Rename">Atın ózgertiw</string>
+    <string name="delete_contact">Kontakttı óshiriw</string>
+    <string name="exit_from_account">Akkaunttan shiǵiw</string>
+    <string name="message_exit">Siz akkaunttan shiǵajaqsizba?</string>
+    <string name="yes">Awa</string>
+    <string name="no">Yaq</string>
 </resources>
