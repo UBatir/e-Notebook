@@ -1,4 +1,4 @@
-package com.example.enotebook.screens.sms
+package com.example.enotebook.helper
 
 import android.app.Activity
 import android.content.BroadcastReceiver
@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.telephony.SmsManager
 import android.widget.Toast
-import com.example.enotebook.screens.helpers.SmsHelper
+import com.example.enotebook.helper.SmsHelper
 
 class SmsSentReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {

@@ -8,12 +8,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.enotebook.Customer
+import com.example.enotebook.data.model.Customer
 import com.example.enotebook.R
 import com.example.enotebook.databinding.FragmentListNameBinding
-import com.example.enotebook.screens.extentions.BaseFragment
-import com.example.enotebook.screens.extentions.ResourceState
-import com.example.enotebook.screens.extentions.onClick
+import com.example.enotebook.extentions.BaseFragment
+import com.example.enotebook.extentions.ResourceState
+import com.example.enotebook.extentions.onClick
 import com.example.enotebook.screens.main.customer.dialogs.ChangeBalanceDialog
 import com.example.enotebook.screens.main.customer.dialogs.RenameDialog
 import org.koin.android.ext.android.inject
@@ -103,7 +103,7 @@ class ListNameFragment : BaseFragment(R.layout.fragment_list_name) {
     }
 
 
-    private fun onItemOptions(view: View,customer: Customer,position:Int){
+    private fun onItemOptions(view: View, customer: Customer, position:Int){
         val optionsMenu= PopupMenu(requireContext(),view)
         val menuInflater=optionsMenu.menuInflater
         menuInflater.inflate(R.menu.item_menu,optionsMenu.menu)

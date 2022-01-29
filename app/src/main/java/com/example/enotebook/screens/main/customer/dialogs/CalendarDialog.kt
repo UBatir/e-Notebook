@@ -4,7 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import com.example.enotebook.databinding.DialogCalendarBinding
-import com.example.enotebook.screens.extentions.onClick
+import com.example.enotebook.extentions.onClick
 
 
 class CalendarDialog(context: Context): Dialog(context) {

@@ -1,4 +1,4 @@
-package com.example.enotebook.screens.extentions
+package com.example.enotebook.extentions
 
 import android.app.Activity
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.example.enotebook.screens.helpers
+package com.example.enotebook.helper
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.FirebaseAuth

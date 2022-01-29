@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.enotebook.Customer
-import com.example.enotebook.screens.extentions.Resource
-import com.example.enotebook.screens.helpers.FireStoreHelper
-import com.example.enotebook.screens.helpers.SmsHelper
+import com.example.enotebook.data.model.Customer
+import com.example.enotebook.extentions.Resource
+import com.example.enotebook.helper.FireStoreHelper
+import com.example.enotebook.helper.SmsHelper
 
 class SmsListNameViewModel(private val fireStoreHelper: FireStoreHelper):ViewModel() {
 

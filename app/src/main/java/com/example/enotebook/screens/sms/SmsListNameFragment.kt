@@ -6,9 +6,9 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.enotebook.R
 import com.example.enotebook.databinding.FragmentSmsListNameBinding
-import com.example.enotebook.screens.extentions.BaseFragment
-import com.example.enotebook.screens.extentions.ResourceState
-import com.example.enotebook.screens.extentions.onClick
+import com.example.enotebook.extentions.BaseFragment
+import com.example.enotebook.extentions.ResourceState
+import com.example.enotebook.extentions.onClick
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat

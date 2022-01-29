@@ -5,8 +5,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import com.example.enotebook.databinding.DiaogChangeBalanceBinding
-import com.example.enotebook.screens.extentions.onClick
-import java.util.*
+import com.example.enotebook.extentions.onClick
 
 class ChangeBalanceDialog(context: Context):Dialog(context) {
 

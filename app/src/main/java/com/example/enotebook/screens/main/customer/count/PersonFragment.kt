@@ -6,12 +6,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import com.example.enotebook.Customer
+import com.example.enotebook.data.model.Customer
 import com.example.enotebook.R
 import com.example.enotebook.databinding.PersonFragmentBinding
-import com.example.enotebook.screens.extentions.BaseFragment
-import com.example.enotebook.screens.extentions.ResourceState
-import com.example.enotebook.screens.extentions.onClick
+import com.example.enotebook.extentions.BaseFragment
+import com.example.enotebook.extentions.ResourceState
+import com.example.enotebook.extentions.onClick
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class PersonFragment:BaseFragment(R.layout.person_fragment) {

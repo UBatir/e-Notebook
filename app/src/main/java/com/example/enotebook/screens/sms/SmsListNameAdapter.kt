@@ -2,16 +2,16 @@ package com.example.enotebook.screens.sms
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.enotebook.Customer
+import com.example.enotebook.data.model.Customer
 import com.example.enotebook.R
 import com.example.enotebook.databinding.NoteSmsListNameBinding
-import com.example.enotebook.screens.extentions.inflate
-import com.example.enotebook.screens.extentions.onClick
+import com.example.enotebook.extentions.inflate
+import com.example.enotebook.extentions.onClick
 
 class SmsListNameAdapter:RecyclerView.Adapter<SmsListNameAdapter.SmsListNameViewHolder>() {
 
     inner class SmsListNameViewHolder(private val binding: NoteSmsListNameBinding):RecyclerView.ViewHolder(binding.root){
-        fun populateModel(model:Customer){
+        fun populateModel(model: Customer){
             binding.apply{
                 tvNameSms.text=model.name
                 tvSum.text=model.sum.toString()

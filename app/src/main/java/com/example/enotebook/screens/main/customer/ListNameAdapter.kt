@@ -3,18 +3,18 @@ package com.example.enotebook.screens.main.customer
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.enotebook.Customer
+import com.example.enotebook.data.model.Customer
 import com.example.enotebook.R
 import com.example.enotebook.databinding.NoteListNameBinding
-import com.example.enotebook.screens.extentions.inflate
-import com.example.enotebook.screens.extentions.onClick
+import com.example.enotebook.extentions.inflate
+import com.example.enotebook.extentions.onClick
 
 class ListNameAdapter : RecyclerView.Adapter<ListNameAdapter.ListNameViewHolder>() {
 
     inner class ListNameViewHolder(private val binding: NoteListNameBinding) : RecyclerView.ViewHolder(
             binding.root
     ) {
-        fun populateModel(model: Customer?,position: Int) {
+        fun populateModel(model: Customer?, position: Int) {
             binding.tvName.text = model!!.name
             binding.tvSum.text = model.sum.toString()
             binding.tvComment.text = model.comment
@@ -27,13 +27,13 @@ class ListNameAdapter : RecyclerView.Adapter<ListNameAdapter.ListNameViewHolder>
         }
     }
 
-    private var onItemClick:(customer:Customer)->Unit={}
-    fun setOnClickItemListener(onItemClick:(customer:Customer)->Unit){
+    private var onItemClick:(customer: Customer)->Unit={}
+    fun setOnClickItemListener(onItemClick:(customer: Customer)->Unit){
         this.onItemClick=onItemClick
     }
 
-    private var onItemClickOptions: (view: View, customer: Customer,position:Int) -> Unit = { _: View, _: Customer, _: Int -> }
-    fun setOnClickItemOptionsListener(onItemClickOptions: (view: View, customer: Customer,position:Int) -> Unit) {
+    private var onItemClickOptions: (view: View, customer: Customer, position:Int) -> Unit = { _: View, _: Customer, _: Int -> }
+    fun setOnClickItemOptionsListener(onItemClickOptions: (view: View, customer: Customer, position:Int) -> Unit) {
         this.onItemClickOptions = onItemClickOptions
     }
 

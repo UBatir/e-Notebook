@@ -2,11 +2,11 @@ package com.example.enotebook.screens.main.customer.count
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.enotebook.Customer
+import com.example.enotebook.data.model.Customer
 import com.example.enotebook.R
 import com.example.enotebook.databinding.PersonItemBinding
-import com.example.enotebook.screens.extentions.inflate
-import com.example.enotebook.screens.extentions.onClick
+import com.example.enotebook.extentions.inflate
+import com.example.enotebook.extentions.onClick
 import java.text.SimpleDateFormat
 
 class AdapterPersonFragment:RecyclerView.Adapter<AdapterPersonFragment.ViewHolderPersonFragment>() {
@@ -18,7 +18,7 @@ class AdapterPersonFragment:RecyclerView.Adapter<AdapterPersonFragment.ViewHolde
     }
 
     inner class ViewHolderPersonFragment(private val binding: PersonItemBinding):RecyclerView.ViewHolder(binding.root){
-        fun populateModel(model:Customer?,position: Int){
+        fun populateModel(model: Customer?, position: Int){
             binding.tvSum.text= model!!.sum.toString()
             binding.tvComment.text=model.comment
             binding.tvDeadline.text="Qaytaratug'in waqti : ${getDateFromUTCTimestamp(model.getDate)}"
@@ -29,8 +29,8 @@ class AdapterPersonFragment:RecyclerView.Adapter<AdapterPersonFragment.ViewHolde
         }
     }
 
-    private var onClickButton:(customer:Customer,position:Int)->Unit={ customer: Customer, position: Int -> }
-    fun onClickListenerButton(onClickButton:(customer:Customer,position:Int)->Unit){
+    private var onClickButton:(customer: Customer, position:Int)->Unit={ customer: Customer, position: Int -> }
+    fun onClickListenerButton(onClickButton:(customer: Customer, position:Int)->Unit){
         this.onClickButton=onClickButton
     }
 

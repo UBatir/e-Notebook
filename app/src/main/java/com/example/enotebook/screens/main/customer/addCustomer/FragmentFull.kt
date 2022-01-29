@@ -8,12 +8,12 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.SimpleAdapter
 import androidx.navigation.fragment.findNavController
-import com.example.enotebook.Customer
+import com.example.enotebook.data.model.Customer
 import com.example.enotebook.R
 import com.example.enotebook.databinding.FragmentFullBinding
-import com.example.enotebook.screens.extentions.BaseFragment
-import com.example.enotebook.screens.extentions.ResourceState
-import com.example.enotebook.screens.extentions.onClick
+import com.example.enotebook.extentions.BaseFragment
+import com.example.enotebook.extentions.ResourceState
+import com.example.enotebook.extentions.onClick
 import com.example.enotebook.screens.main.customer.dialogs.CalendarDialog
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat

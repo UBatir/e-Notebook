@@ -1,8 +1,8 @@
-package com.example.enotebook.screens.helpers
+package com.example.enotebook.helper
 
 
 import android.annotation.SuppressLint
-import com.example.enotebook.Customer
+import com.example.enotebook.data.model.Customer
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
@@ -35,7 +35,7 @@ class FireStoreHelper(private val auth: FirebaseAuth, private val db: FirebaseFi
             }
     }
 
-    fun addInstallment(customer: Customer,onSuccess: () -> Unit,onFailure: (msg: String) -> Unit){
+    fun addInstallment(customer: Customer, onSuccess: () -> Unit, onFailure: (msg: String) -> Unit){
         val map:MutableMap<String,Any> = mutableMapOf()
         map["name"]=customer.name
         map["sum"]=customer.sum
@@ -148,7 +148,7 @@ class FireStoreHelper(private val auth: FirebaseAuth, private val db: FirebaseFi
                 }
     }
 
-    fun getPerson(name:String,onSuccess: (list: List<Customer>) -> Unit, onFailure: (msg: String) -> Unit){
+    fun getPerson(name:String, onSuccess: (list: List<Customer>) -> Unit, onFailure: (msg: String) -> Unit){
         db.collection("contacts").document(auth.currentUser!!.uid).collection("installment").whereEqualTo("id","").whereEqualTo("name",name).get()
             .addOnSuccessListener { collection->
                 if(collection.documents.isNotEmpty()){
@@ -165,7 +165,7 @@ class FireStoreHelper(private val auth: FirebaseAuth, private val db: FirebaseFi
 
     }
 
-    fun deleteFromPerson(customer: Customer,total:Long,onSuccess: () -> Unit,onFailure: (msg: String) -> Unit){
+    fun deleteFromPerson(customer: Customer, total:Long, onSuccess: () -> Unit, onFailure: (msg: String) -> Unit){
         val update= hashMapOf<String, Any>(
                 "sum" to (total-customer.sum)
         )

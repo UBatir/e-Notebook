@@ -5,11 +5,10 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.example.enotebook.R
 import com.example.enotebook.databinding.FragmentAddContactBinding
-import com.example.enotebook.screens.extentions.BaseFragment
-import com.example.enotebook.screens.extentions.onClick
+import com.example.enotebook.extentions.BaseFragment
+import com.example.enotebook.extentions.onClick
 import com.google.android.material.tabs.TabLayoutMediator
 
 

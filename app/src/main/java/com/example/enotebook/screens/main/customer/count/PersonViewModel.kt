@@ -4,9 +4,9 @@ package com.example.enotebook.screens.main.customer.count
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.enotebook.Customer
-import com.example.enotebook.screens.extentions.Resource
-import com.example.enotebook.screens.helpers.FireStoreHelper
+import com.example.enotebook.data.model.Customer
+import com.example.enotebook.extentions.Resource
+import com.example.enotebook.helper.FireStoreHelper
 
 class PersonViewModel(private val fireStoreHelper: FireStoreHelper): ViewModel() {
 
@@ -22,7 +22,7 @@ class PersonViewModel(private val fireStoreHelper: FireStoreHelper): ViewModel()
         })
     }
 
-    fun deleteContact(customer: Customer,total:Long){
+    fun deleteContact(customer: Customer, total:Long){
         fireStoreHelper.deleteFromPerson(customer,total,{
             _listPerson.value=Resource.success(null)
         },{

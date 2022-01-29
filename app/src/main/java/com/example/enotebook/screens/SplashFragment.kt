@@ -7,15 +7,15 @@ import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.enotebook.R
-import com.example.enotebook.screens.extentions.BaseFragment
-import com.example.enotebook.utils.SharedPreferences
+import com.example.enotebook.extentions.BaseFragment
+import com.example.enotebook.data.local.SharedPreferences
 import org.koin.android.ext.android.inject
 import java.util.*
 
 class SplashFragment : BaseFragment(R.layout.fragment_splash) {
 
     private lateinit var navController: NavController
-    private val settings:SharedPreferences by inject()
+    private val settings: SharedPreferences by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

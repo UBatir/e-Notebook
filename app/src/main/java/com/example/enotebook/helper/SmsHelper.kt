@@ -1,12 +1,10 @@
-package com.example.enotebook.screens.helpers
+package com.example.enotebook.helper
 
 import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.telephony.SmsManager
-import android.widget.Toast
-import com.example.enotebook.screens.sms.SmsSentReceiver
 
 @SuppressLint("StaticFieldLeak")
 object SmsHelper {

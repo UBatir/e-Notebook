@@ -1,8 +1,7 @@
-package com.example.enotebook.utils
+package com.example.enotebook.data.local
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
 
 class SharedPreferences(context:Context) {
     companion object{

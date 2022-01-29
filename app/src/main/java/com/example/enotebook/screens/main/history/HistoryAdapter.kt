@@ -2,15 +2,15 @@ package com.example.enotebook.screens.main.history
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.enotebook.Customer
+import com.example.enotebook.data.model.Customer
 import com.example.enotebook.R
 import com.example.enotebook.databinding.NoteHistoryBinding
-import com.example.enotebook.screens.extentions.inflate
+import com.example.enotebook.extentions.inflate
 
 class HistoryAdapter:RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
     inner class HistoryViewHolder(private val binding:NoteHistoryBinding):RecyclerView.ViewHolder(binding.root){
-        fun populateModel(model:Customer?){
+        fun populateModel(model: Customer?){
             binding.tvComment.text=model!!.comment
             binding.tvNumber.text=model.phoneNumber
             binding.tvChangeData.text=model.changeDate

@@ -3,10 +3,9 @@ package com.example.enotebook.screens.main.customer.addCustomer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.enotebook.Customer
-import com.example.enotebook.screens.extentions.Resource
-import com.example.enotebook.screens.helpers.FireStoreHelper
-import java.text.SimpleDateFormat
+import com.example.enotebook.data.model.Customer
+import com.example.enotebook.extentions.Resource
+import com.example.enotebook.helper.FireStoreHelper
 import java.util.*
 
 class AddCustomerViewModel(private val fireStoreHelper: FireStoreHelper):ViewModel() {
@@ -23,7 +22,7 @@ class AddCustomerViewModel(private val fireStoreHelper: FireStoreHelper):ViewMod
         })
     }
 
-    fun addInstallment(customer: Customer,n:Int,date:Date){
+    fun addInstallment(customer: Customer, n:Int, date:Date){
         for (i in 1 .. n){
             customer.sum=customer.sum/n
             customer.getDate = (date.time)/1000+i*2678400

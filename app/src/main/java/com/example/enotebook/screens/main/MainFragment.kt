@@ -6,11 +6,9 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.enotebook.R
-import com.example.enotebook.databinding.FragmentAddContactBinding
 import com.example.enotebook.databinding.FragmentMainBinding
-import com.example.enotebook.screens.extentions.BaseFragment
-import com.example.enotebook.screens.extentions.onClick
-import com.example.enotebook.screens.main.customer.ListNameFragmentDirections
+import com.example.enotebook.extentions.BaseFragment
+import com.example.enotebook.extentions.onClick
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 
@@ -22,8 +20,7 @@ class MainFragment : BaseFragment(R.layout.fragment_main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val _binding= FragmentMainBinding.bind(view)
-        binding=_binding
+        binding = FragmentMainBinding.bind(view)
         setUpBottomNav()
         setAppBarCorersRadius()
         navController = Navigation.findNavController(view)

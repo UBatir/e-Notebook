@@ -7,8 +7,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.enotebook.R
 import com.example.enotebook.databinding.FragmentPasswordBinding
-import com.example.enotebook.screens.extentions.BaseFragment
-import com.example.enotebook.utils.SharedPreferences
+import com.example.enotebook.extentions.BaseFragment
+import com.example.enotebook.data.local.SharedPreferences
 import com.google.firebase.auth.FirebaseAuth
 import com.hanks.passcodeview.PasscodeView.PasscodeViewListener
 import org.koin.android.ext.android.inject

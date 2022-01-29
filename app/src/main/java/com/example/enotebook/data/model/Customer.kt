@@ -1,4 +1,4 @@
-package com.example.enotebook
+package com.example.enotebook.data.model
 
 data class Customer(
         var id:String="",

@@ -4,7 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import com.example.enotebook.databinding.DiaogRenameBinding
-import com.example.enotebook.screens.extentions.onClick
+import com.example.enotebook.extentions.onClick
 
 class RenameDialog(context:Context):Dialog(context) {
 

@@ -1,9 +1,10 @@
-package com.example.enotebook.screens.extentions
+package com.example.enotebook.extentions
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.viewbinding.ViewBinding
 
 fun View.visibility(visibility: Boolean): View {
     if (visibility) {
@@ -19,3 +20,6 @@ fun View.onClick(onClick: (View) -> Unit) {
 
 fun ViewGroup.inflate(@LayoutRes id: Int): View = LayoutInflater.from(context).inflate(id,this,false)
 
+fun <T : ViewBinding> T.scope(block: T.() -> Unit) {
+    block(this)
+}
