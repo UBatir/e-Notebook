@@ -18,7 +18,6 @@
         <action
             android:id="@+id/action_authorizationFragment_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:enterAnim="@android:anim/slide_out_right"
             app:launchSingleTop="true"
             app:popUpTo="@+id/nav_graph"
             app:popUpToInclusive="true"/>
@@ -37,21 +36,12 @@
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.enotebook.screens.SplashFragment"
+        android:name="com.example.enotebook.screens.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
-            android:id="@+id/action_splashFragment_to_authorizationFragment"
-            app:destination="@id/authorizationFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:launchSingleTop="true"
-            app:popUpTo="@+id/nav_graph"
-            app:popUpToInclusive="true"/>
-        <action
-            android:id="@+id/action_splashFragment_to_mainFragment"
-            app:destination="@id/mainFragment"
-            app:enterAnim="@android:anim/slide_out_right"
+            android:id="@+id/action_splashFragment_to_passwordFragment"
+            app:destination="@id/passwordFragment"
             app:launchSingleTop="true"
             app:popUpTo="@+id/nav_graph"
             app:popUpToInclusive="true"/>
@@ -60,5 +50,34 @@
         android:id="@+id/mainFragment"
         android:name="com.example.enotebook.screens.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_addCustomerFragment"
+            app:destination="@id/addCustomerFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_authorizationFragment"
+            app:destination="@id/authorizationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCustomerFragment"
+        android:name="com.example.enotebook.screens.main.customer.addCustomer.AddCustomerFragment"
+        android:label="AddCustomerFragment" />
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="com.example.enotebook.screens.main.PasswordFragment"
+        android:label="PasswordFragment"
+        tools:layout="@layout/fragment_password">
+        <action
+            android:id="@+id/action_passwordFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/nav_graph"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_passwordFragment_to_authorizationFragment"
+            app:destination="@id/authorizationFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
 </navigation>

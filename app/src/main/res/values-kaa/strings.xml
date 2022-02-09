@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Qarız Daptershesi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="email_not_entered_error">Iltimas, logindı kirgizıń!</string>
+    <string name="enter_your_password_error">Iltimas, paroldı kirgizıń!</string>
+    <string name="enter_amount">"Iltimas, qarız muǵdarın kirgizıń!"</string>
+    <string name="enter_number">"Iltimas, telefon nomerin kirgizıń!"</string>
+    <string name="enter_name">"Iltimas, F.I.O. kirgizıń!"</string>
+    <string name="spisok">Dizim</string>
+    <string name="sms">SMS</string>
+    <string name="search">Izlew...</string>
+    <string name="settings">Sazlamalar</string>
+    <string name="selectLanguage">Tildı saylań</string>
+    <string name="save">Saqlaw</string>
+    <string name="password">Parol</string>
+    <string name="login">Login</string>
+    <string name="registration">Registraciya</string>
+    <string name="phone_number">Telefon nomer</string>
+    <string name="name">Atı</string>
+    <string name="sum">Summa</string>
+    <string name="add">Qosıw</string>
+    <string name="comment">Qosımsha maǵlıwmat</string>
+    <string name="get_time">Qarız alǵan waqıt:</string>
+    <string name="set_time">Qarız alǵan waqıt:</string>
+    <string name="count_months">Aylar sanı:</string>
+    <string name="all">Hámmesi:</string>
+    <string name="already_have_an_account">Sizde akkaunt barma?</string>
+    <string name="Required">Talap etiledi*</string>
+    <string name="google_icon">google icon</string>
+    <string name="sign_in">Kiriw:</string>
+    <string name="turnOn">Internettı qosıńiz</string>
+    <string name="history">Tariyx</string>
+    <string name="changeSum">Summanı ózgertiw</string>
+    <string name="Rename">Atın ózgertiw</string>
+    <string name="delete_contact">Kontakttı óshiriw</string>
+    <string name="exit_from_account">Akkaunttan shiǵiw</string>
+    <string name="message_exit">Siz akkaunttan shiǵajaqsizba?</string>
+    <string name="yes">Awa</string>
+    <string name="no">Yaq</string>
+    <string name="Loading">Loading...</string>
+    <string name="Success">Success</string>
+</resources>

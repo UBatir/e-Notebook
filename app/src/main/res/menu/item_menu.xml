@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group>
+        <item android:id="@+id/itemHistory"
+            android:title="@string/history"/>
+
+        <item android:id="@+id/itemChangeBalance"
+            android:title="@string/changeSum"/>
+
+        <item android:id="@+id/itemRename"
+            android:title="@string/Rename" />
+
+        <item android:id="@+id/itemDelete"
+            android:title="@string/delete_contact" />
+    </group>
+</menu>

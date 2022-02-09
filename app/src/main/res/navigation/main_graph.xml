@@ -3,11 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/reportFragment2">
+    app:startDestination="@id/NameListFragment">
 
     <fragment
-        android:id="@+id/reportFragment2"
-        android:name="com.example.enotebook.screens.main.ListNameFragment"
-        android:label="fragment_report"
-        tools:layout="@layout/fragment_list_name" />
+        android:id="@+id/NameListFragment"
+        android:name="com.example.enotebook.screens.main.customer.ListNameFragment"
+        tools:layout="@layout/fragment_list_name" >
+        <action
+            android:id="@+id/action_NameListFragment_to_HistoryFragment"
+            app:destination="@id/HistoryFragment" />
+        <action
+            android:id="@+id/action_NameListFragment_to_MessageListName"
+            app:destination="@id/MessageListName" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/MessageListName"
+        android:name="com.example.enotebook.screens.sms.SmsListNameFragment"
+        tools:layout="@layout/sms_list_name"/>
+
+    <fragment
+        android:id="@+id/HistoryFragment"
+        android:name="com.example.enotebook.screens.main.history.HistoryFragment"
+        android:label="HistoryFragment"
+        tools:layout="@layout/fragment_history">
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
 </navigation>
