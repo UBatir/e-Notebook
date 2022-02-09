@@ -4,7 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import uz.example.computerservice.App
+import com.example.enotebook.App
 
 /**
  *  Created by Ikromjonov Ma'rufjon

@@ -5,17 +5,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.enotebook.data.model.Customer
 import com.example.enotebook.extentions.Resource
+import com.example.enotebook.helper.AuthHelper
 import com.example.enotebook.helper.FireStoreHelper
 
-class ListNameViewModel(private val fireStoreHelper: FireStoreHelper):ViewModel() {
+class ListNameViewModel(private val fireStoreHelper: FireStoreHelper,private val authHelper: AuthHelper):ViewModel() {
 
-    private val _listContacts:MutableLiveData<Resource<List<Customer?>>> = MutableLiveData()
-    val listContacts:LiveData<Resource<List<Customer?>>> get() = _listContacts
+    private val _listContacts:MutableLiveData<Resource<MutableList<Customer>>> = MutableLiveData()
+    val listContacts:LiveData<Resource<MutableList<Customer>>> get() = _listContacts
 
     fun getContacts(){
         _listContacts.value=Resource.loading()
         fireStoreHelper.getContacts({
-            _listContacts.value= Resource.success(it)
+            _listContacts.value= Resource.success(it as MutableList<Customer>)
         },{
             _listContacts.value=Resource.error(it)
         })
@@ -43,5 +44,9 @@ class ListNameViewModel(private val fireStoreHelper: FireStoreHelper):ViewModel(
         },{
             _listContacts.value=Resource.error(it)
         })
+    }
+
+    fun signOut(){
+        authHelper.signOut()
     }
 }

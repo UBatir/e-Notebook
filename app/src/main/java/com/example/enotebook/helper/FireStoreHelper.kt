@@ -18,39 +18,19 @@ class FireStoreHelper(private val auth: FirebaseAuth, private val db: FirebaseFi
         val map:MutableMap<String, Any> = mutableMapOf()
         map["name"]=customer.name
         map["sum"]=customer.sum
+        map["historySum"]=customer.historySum
         map["comment"]=customer.comment
         map["phoneNumber"]=customer.phoneNumber
-        map["getDate"]=customer.getDate
-        map["setDate"]=customer.setDate
+        map["createDate"]=customer.createDate
         map["id"] = UUID.randomUUID().toString()
-        map["changeDate"]= SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault()).format(Calendar.getInstance().time).toString()
+        map["updateDate"]= SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault()).format(Calendar.getInstance().time).toString()
         db.collection("contacts").document(auth.currentUser!!.uid).collection("data").document(map["id"].toString()).set(map)
-        db.collection("contacts").document(auth.currentUser!!.uid).collection("history").document().set(map)
-        db.collection("contacts").document(auth.currentUser!!.uid).collection("installment").document(map["id"].toString()).set(map)
             .addOnSuccessListener {
                 onSuccess.invoke()
             }
             .addOnFailureListener {
                 onFailure.invoke(it.localizedMessage)
             }
-    }
-
-    fun addInstallment(customer: Customer, onSuccess: () -> Unit, onFailure: (msg: String) -> Unit){
-        val map:MutableMap<String,Any> = mutableMapOf()
-        map["name"]=customer.name
-        map["sum"]=customer.sum
-        map["comment"]=customer.comment
-        map["getDate"]=customer.getDate
-        map["setDate"]=customer.setDate
-        map["phoneNumber"]=customer.phoneNumber
-        map["id"]=customer.id
-        db.collection("contacts").document(auth.currentUser!!.uid).collection("installment").document(customer.getDate.toString()).set(map)
-                .addOnSuccessListener {
-                    onSuccess.invoke()
-                }
-                .addOnFailureListener {
-                    onFailure.invoke(it.localizedMessage)
-                }
     }
 
     fun getContacts(onSuccess: (list: List<Customer?>) -> Unit, onFailure: (msg: String) -> Unit){
@@ -170,7 +150,6 @@ class FireStoreHelper(private val auth: FirebaseAuth, private val db: FirebaseFi
                 "sum" to (total-customer.sum)
         )
         db.collection("contacts").document(auth.currentUser!!.uid).collection("data").document(customer.id).update(update)
-        db.collection("contacts").document(auth.currentUser!!.uid).collection("installment").document(customer.getDate.toString()).delete()
                 .addOnSuccessListener {
                     onSuccess.invoke()
                 }

@@ -1,90 +1,97 @@
 package com.example.enotebook.screens.auth.signIn
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.enotebook.R
 import com.example.enotebook.data.local.SharedPreferences
 import com.example.enotebook.databinding.FragmentSignInBinding
-import com.example.enotebook.extentions.BaseFragment
 import com.example.enotebook.extentions.ResourceState
 import com.example.enotebook.extentions.onClick
 import com.example.enotebook.extentions.scope
+import com.example.enotebook.extentions.toastLN
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
-class SignInFragment : BaseFragment(R.layout.fragment_sign_in){
+class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
-    private lateinit var navController: NavController
-    private lateinit var binding: FragmentSignInBinding
+    private val binding by viewBinding(FragmentSignInBinding::bind)
     private val viewModel by viewModel<SignInViewModel>()
-    private val sharedPreferences: SharedPreferences by inject()
+    private val mGoogleSignInClient: GoogleSignInClient by inject()
+
     companion object{
         private const val SIGN_IN:Int=1
     }
-    private val mGoogleSignInClient:GoogleSignInClient by inject()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?)=binding.scope {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = binding.scope {
         super.onViewCreated(view, savedInstanceState)
-        navController=Navigation.findNavController(view)
-        sharedPreferences.setFirstLaunched()
         setUpObservers()
         btnLogin.onClick {
-            val email=etLogin.text.toString()
-            val password=etPassword.text.toString()
-            if(email.isNotEmpty()&&password.isNotEmpty()){
-                viewModel.signIn(email,password)
-            }else{
-                if (email.isEmpty()){
-                    etLogin.error=getString(R.string.email_not_entered_error)
+            val email = etLogin.text.toString()
+            val password = etPassword.text.toString()
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                btnLogin.progress = 1
+                viewModel.signIn(email, password)
+            } else {
+                if (email.isEmpty()) {
+                    etLogin.error = getString(R.string.email_not_entered_error)
                 }
-                if(password.isEmpty()){
-                    etPassword.error=getString(R.string.enter_your_password_error)
+                if (password.isEmpty()) {
+                    etPassword.error = getString(R.string.enter_your_password_error)
                 }
             }
         }
         btnSignUp.onClick {
-            val action= SignInFragmentDirections.actionAuthorizationFragmentToRegistrationFragment()
-            navController.navigate(action)
+            val action =
+                SignInFragmentDirections.actionAuthorizationFragmentToRegistrationFragment()
+            findNavController().navigate(action)
         }
         googleLogin.onClick {
             signIn()
         }
     }
 
-    private fun setUpObservers(){
-        viewModel.signInResult.observe(viewLifecycleOwner,{
-            when(it.status){
-                ResourceState.LOADING->binding.loading.visibility=View.VISIBLE
-                ResourceState.SUCCESS->{
-                    binding.loading.visibility=View.INVISIBLE
-                    val action=SignInFragmentDirections.actionAuthorizationFragmentToMainFragment()
-                    navController.navigate(action)
+    private fun setUpObservers()=binding.scope {
+        viewModel.signInResult.observe(viewLifecycleOwner, {
+            when (it.status) {
+                ResourceState.LOADING -> {
+                    btnLogin.isClickable = false
+                    btnLogin.isFocusable = false
                 }
-                ResourceState.ERROR->{
+                ResourceState.SUCCESS -> {
+                    btnLogin.progress = 100
+                    val action =
+                        SignInFragmentDirections.actionAuthorizationFragmentToMainFragment()
+                    findNavController().navigate(action)
+                }
+                ResourceState.ERROR -> {
                     toastLN(it.message)
-                    binding.loading.visibility=View.INVISIBLE
+                    btnLogin.progress = -1
+                    btnLogin.isClickable = true
+                    btnLogin.isFocusable = true
                 }
             }
         })
     }
 
-    private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            // There are no request codes
-            val data: Intent? = result.data
-            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
+    private fun signIn(){
+        val signInIntent  =mGoogleSignInClient.signInIntent
+        startActivityForResult(signInIntent, SIGN_IN)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode== SIGN_IN){
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account=task.getResult(ApiException::class.java)
                 account?.let {
@@ -95,29 +102,25 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in){
                 when(e.statusCode){
                     7->toastLN(getString(R.string.turnOn))
                 }
-                Toast.makeText(requireContext(), e.localizedMessage, Toast.LENGTH_LONG).show()
+                toastLN(e.localizedMessage)
             }
         }
     }
 
-    private fun signIn(){
-        val signInIntent: Intent =mGoogleSignInClient.signInIntent
-        resultLauncher.launch(signInIntent)
-    }
-
-    private fun setUpObserversGoogle() {
-        viewModel.signInGoogle.observe(viewLifecycleOwner,{
-            when(it.status){
-                ResourceState.SUCCESS->{
-                    binding.loading.visibility=View.GONE
-                    val action=SignInFragmentDirections.actionAuthorizationFragmentToMainFragment()
-                    navController.navigate(action)
+    private fun setUpObserversGoogle()=binding.scope {
+        viewModel.signInGoogle.observe(viewLifecycleOwner, {
+            when (it.status) {
+                ResourceState.SUCCESS -> {
+                    loading.hide()
+                    val action =
+                        SignInFragmentDirections.actionAuthorizationFragmentToMainFragment()
+                    findNavController().navigate(action)
                 }
-                ResourceState.ERROR->{
-                    binding.loading.visibility=View.GONE
+                ResourceState.ERROR -> {
+                    loading.hide()
                     toastLN(it.message)
                 }
-                ResourceState.LOADING->binding.loading.visibility=View.VISIBLE
+                ResourceState.LOADING -> loading.show()
             }
         })
     }

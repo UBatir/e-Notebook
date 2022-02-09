@@ -2,34 +2,16 @@ package com.example.enotebook.data.local
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.enotebook.extentions.BooleanPreference
+import com.example.enotebook.extentions.IntPreference
+import com.example.enotebook.extentions.StringPreference
 
 class SharedPreferences(context:Context) {
-    companion object{
-        const val IS_APP_FIRST_LAUNCH="isAppFirstLaunch"
-        const val PASSWORD="password"
-        const val LANGUAGE = "currentLanguage"
-    }
 
-    private val sharedPreferences: SharedPreferences =context.getSharedPreferences("PasswordSharePreference",Context.MODE_PRIVATE)
+    private val sharedPreferences: SharedPreferences =context.getSharedPreferences("SharePreference",Context.MODE_PRIVATE)
 
-    fun setFirstLaunched(){
-        sharedPreferences.edit().putBoolean(IS_APP_FIRST_LAUNCH,false).apply()
-    }
-
-    fun isAppFirstLaunched():Boolean= sharedPreferences.getBoolean(IS_APP_FIRST_LAUNCH,true)
-
-
-    fun setPassword(number:String){
-        sharedPreferences.edit().putString(PASSWORD,number).apply()
-    }
-
-    fun getPassword():String=sharedPreferences.getString(PASSWORD,"")?:""
-
-
-    fun setLanguage(language: String) {
-        sharedPreferences.edit().putString(LANGUAGE, language).apply()
-    }
-
-    fun getLanguage() : String = sharedPreferences.getString(LANGUAGE, "") ?:"ru"
-
+    var position:Int by IntPreference(sharedPreferences,1)
+    var password:String by StringPreference(sharedPreferences,"")
+    var language:String by StringPreference(sharedPreferences,"")
+    var changeLanguage:Boolean by BooleanPreference(sharedPreferences,false)
 }

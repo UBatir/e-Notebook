@@ -4,10 +4,10 @@ data class Customer(
         var id:String="",
         var name:String="",
         var sum:Long=0,
+        var historySum:List<Long> = listOf(),
         var comment:String="",
         var phoneNumber:String="",
-        var getDate:Long=0,
-        var setDate:String="",
+        var createDate:Long=0,
         var changeDate:String="",
         var isChecked:Boolean=false
 )

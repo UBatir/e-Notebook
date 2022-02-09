@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAFAFA"
@@ -23,11 +22,14 @@
         android:layout_marginEnd="32dp"
         android:layout_marginTop="32dp">
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/actvName"
+            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"/>
+
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -52,16 +54,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
-        android:id="@+id/ivSetData"
+        android:id="@+id/ivCreateDate"
         android:layout_width="40dp"
         android:layout_height="40dp"
         app:layout_constraintStart_toStartOf="@id/tvInputLayoutSum"
-        app:layout_constraintEnd_toStartOf="@id/setData"
-        app:layout_constraintTop_toTopOf="@id/setData"
-        app:layout_constraintBottom_toBottomOf="@id/setData"
+        app:layout_constraintEnd_toStartOf="@id/tvDate"
+        app:layout_constraintTop_toTopOf="@id/tvDate"
+        app:layout_constraintBottom_toBottomOf="@id/tvDate"
         android:src="@drawable/ic_today"
         android:paddingStart="@dimen/little_standard_margin"
         android:paddingEnd="4dp"
@@ -70,70 +73,27 @@
         android:layout_marginEnd="4dp"/>
 
     <TextView
-        android:id="@+id/setData"
+        android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/ivSetData"
-        app:layout_constraintEnd_toEndOf="@id/tv_set_date"
+        app:layout_constraintStart_toEndOf="@id/ivCreateDate"
+        app:layout_constraintEnd_toEndOf="@id/tvCreateDate"
         app:layout_constraintTop_toBottomOf="@id/tvInputLayoutSum"
-        android:hint="@string/get_time"
+        android:hint="@string/date"
         android:textSize="18sp"
         android:layout_marginTop="24dp"/>
 
     <TextView
-        android:id="@+id/tv_set_date"
+        android:id="@+id/tvCreateDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/setData"
+        app:layout_constraintStart_toEndOf="@id/tvDate"
         app:layout_constraintEnd_toEndOf="@id/tvInputLayoutSum"
-        app:layout_constraintBottom_toTopOf="@id/getData"
         app:layout_constraintTop_toBottomOf="@id/tvInputLayoutSum"
         android:textSize="18sp"
         android:paddingStart="@dimen/little_standard_margin"
         android:textStyle="bold"
         android:layout_marginTop="24dp"/>
-
-    <ImageView
-        android:id="@+id/ivGetData"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_today"
-        app:layout_constraintStart_toStartOf="@id/ivSetData"
-        app:layout_constraintEnd_toStartOf="@id/getData"
-        app:layout_constraintTop_toTopOf="@id/getData"
-        app:layout_constraintBottom_toBottomOf="@id/getData"
-        android:paddingStart="@dimen/little_standard_margin"
-        android:paddingEnd="4dp"
-        android:paddingTop="@dimen/little_standard_margin"
-        android:paddingBottom="@dimen/little_standard_margin"
-        android:layout_marginEnd="4dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/getData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/count_months"
-        android:textSize="18sp"
-        android:layout_marginTop="@dimen/standard_margin"
-        app:layout_constraintStart_toEndOf="@id/ivGetData"
-        app:layout_constraintEnd_toStartOf="@id/getData"
-        app:layout_constraintTop_toBottomOf="@id/tv_set_date"/>
-
-    <EditText
-        android:id="@+id/etCountMonths"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:background="@drawable/background_edittext"
-        android:layout_marginStart="4dp"
-        android:padding="4dp"
-        android:inputType="number"
-        app:layout_constraintStart_toEndOf="@id/getData"
-        app:layout_constraintEnd_toEndOf="@id/tv_set_date"
-        app:layout_constraintTop_toTopOf="@id/getData"
-        app:layout_constraintBottom_toBottomOf="@id/getData"/>
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -153,7 +113,7 @@
         app:counterMaxLength="9"
         app:helperText="Required*"
         app:helperTextTextColor="@android:color/holo_red_light"
-        app:layout_constraintTop_toBottomOf="@id/getData">
+        app:layout_constraintTop_toBottomOf="@id/tvDate">
 
         <EditText
             android:id="@+id/etPhoneNumber"
@@ -186,7 +146,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnPlus"
+        android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add"

@@ -35,7 +35,7 @@
 
 
             <TextView
-                android:id="@+id/tvData"
+                android:id="@+id/tvDate"
                 android:text="Tel: +99890 12 345678"
                 android:textSize="16sp"
                 android:textColor="@color/black"
@@ -52,8 +52,8 @@
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/tvData"
-                app:layout_constraintTop_toBottomOf="@id/tvData"
+                app:layout_constraintStart_toStartOf="@id/tvDate"
+                app:layout_constraintTop_toBottomOf="@id/tvDate"
                 tools:ignore="MissingConstraints" />
 
             <TextView

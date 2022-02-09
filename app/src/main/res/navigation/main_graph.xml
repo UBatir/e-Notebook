@@ -3,40 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/reportFragment">
+    app:startDestination="@id/NameListFragment">
 
     <fragment
-        android:id="@+id/reportFragment"
+        android:id="@+id/NameListFragment"
         android:name="com.example.enotebook.screens.main.customer.ListNameFragment"
-        android:label="fragment_report"
         tools:layout="@layout/fragment_list_name" >
         <action
-            android:id="@+id/action_reportFragment_to_smsListName"
-            app:destination="@id/smsListName" />
+            android:id="@+id/action_NameListFragment_to_HistoryFragment"
+            app:destination="@id/HistoryFragment" />
         <action
-            android:id="@+id/action_reportFragment_to_historyFragment"
-            app:destination="@id/historyFragment" />
-        <argument
-            android:name="name"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_reportFragment_to_personFragment"
-            app:destination="@id/personFragment" />
-        <action
-            android:id="@+id/action_reportFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            android:id="@+id/action_NameListFragment_to_MessageListName"
+            app:destination="@id/MessageListName" />
     </fragment>
+
     <fragment
-        android:id="@+id/smsListName"
+        android:id="@+id/MessageListName"
         android:name="com.example.enotebook.screens.sms.SmsListNameFragment"
-        android:label="DeadlineListName"
-        tools:layout="@layout/sms_list_name">
-        <action
-            android:id="@+id/action_smsListName_to_reportFragment"
-            app:destination="@id/reportFragment" />
-    </fragment>
+        tools:layout="@layout/sms_list_name"/>
+
     <fragment
-        android:id="@+id/historyFragment"
+        android:id="@+id/HistoryFragment"
         android:name="com.example.enotebook.screens.main.history.HistoryFragment"
         android:label="HistoryFragment"
         tools:layout="@layout/fragment_history">
@@ -47,22 +34,4 @@
             android:name="name"
             app:argType="string" />
     </fragment>
-    <fragment
-        android:id="@+id/personFragment"
-        android:name="com.example.enotebook.screens.main.customer.count.PersonFragment"
-        android:label="PersonFragment">
-        <argument
-            android:name="id"
-            app:argType="string" />
-        <argument
-            android:name="name"
-            app:argType="string" />
-        <argument
-            android:name="total"
-            app:argType="long" />
-    </fragment>
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.example.enotebook.screens.main.SettingsFragment"
-        android:label="SettingsFragment" />
 </navigation>

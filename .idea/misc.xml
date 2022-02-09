@@ -4,13 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.203125" />
+        <entry key="app/src/main/res/layout/diaog_change_balance.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_add_contact.xml" value="0.14166666666666666" />
+        <entry key="app/src/main/res/layout/fragment_add_customer.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_full.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_list_name.xml" value="0.203125" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.203125" />
         <entry key="app/src/main/res/layout/fragment_password.xml" value="0.203125" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.203125" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.203125" />
+        <entry key="app/src/main/res/layout/note_list_name.xml" value="0.2" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.2" />
+        <entry key="app/src/main/res/menu/menu_list_fragment.xml" value="0.2" />
       </map>
     </option>
   </component>

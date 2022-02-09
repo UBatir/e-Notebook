@@ -38,4 +38,6 @@
     <string name="message_exit">Siz akkaunttan shiǵajaqsizba?</string>
     <string name="yes">Awa</string>
     <string name="no">Yaq</string>
+    <string name="Loading">Loading...</string>
+    <string name="Success">Success</string>
 </resources>

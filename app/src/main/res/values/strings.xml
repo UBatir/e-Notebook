@@ -38,6 +38,13 @@
     <string name="message_exit">Do you really exit?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="Loading">Loading...</string>
+    <string name="Success">Success</string>
+    <string name="russian_language">русский язык</string>
+    <string name="karakalpak_language">Каракалпакский</string>
+    <string name="uzbek_language">Узбекский</string>
+    <string name="change_language">Выбор языка</string>
+    <string name="date">Date:</string>
 
     <string-array name="languages">
         <item>Qaraqalpaqsha</item>

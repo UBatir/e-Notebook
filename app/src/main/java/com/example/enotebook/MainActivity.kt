@@ -1,30 +1,29 @@
 package com.example.enotebook
 
 import android.Manifest
-import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.webkit.PermissionRequest
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.navigation.NavController
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import com.example.enotebook.data.local.SharedPreferences
 import com.example.enotebook.databinding.ActivityMainBinding
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import org.koin.android.ext.android.inject
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var navController: NavController
-    lateinit var binding: ActivityMainBinding
+    private val settings: SharedPreferences by inject()
+    private lateinit var binding:ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding= ActivityMainBinding.inflate(layoutInflater)
+        setLocale(settings.language)
         setContentView(binding.root)
-        navController = findNavController(R.id.nav_host_fragment)
+        findNavController(R.id.nav_host_fragment)
         Dexter.withContext(this)
                 .withPermissions(
                         Manifest.permission.SEND_SMS,
@@ -38,5 +37,14 @@ class MainActivity : AppCompatActivity() {
                     ) { /* ... */
                     }
                 }).check()
+    }
+
+    private fun setLocale(localeCode:String) {
+        val resources = resources
+        val dm = resources.displayMetrics
+        val config = resources.configuration
+        val local=Locale(localeCode)
+        config.setLocale(local)
+        resources.updateConfiguration(config, dm)
     }
 }

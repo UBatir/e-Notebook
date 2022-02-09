@@ -21,17 +21,4 @@ class AddCustomerViewModel(private val fireStoreHelper: FireStoreHelper):ViewMod
             _contactSet.value=Resource.error(it)
         })
     }
-
-    fun addInstallment(customer: Customer, n:Int, date:Date){
-        for (i in 1 .. n){
-            customer.sum=customer.sum/n
-            customer.getDate = (date.time)/1000+i*2678400
-            _contactSet.value=Resource.loading()
-            fireStoreHelper.addInstallment(customer,{
-                _contactSet.value=Resource.success(null)
-            },{
-                _contactSet.value=Resource.error(it)
-            })
-        }
-    }
 }

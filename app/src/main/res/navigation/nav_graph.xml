@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.enotebook.screens.SplashFragment"
+        android:name="com.example.enotebook.screens.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -56,22 +56,12 @@
             app:destination="@id/addCustomerFragment" />
         <action
             android:id="@+id/action_mainFragment_to_authorizationFragment"
-            app:destination="@id/authorizationFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@+id/nav_graph"
-            app:popUpToInclusive="true"/>
+            app:destination="@id/authorizationFragment" />
     </fragment>
     <fragment
         android:id="@+id/addCustomerFragment"
         android:name="com.example.enotebook.screens.main.customer.addCustomer.AddCustomerFragment"
-        android:label="AddCustomerFragment" >
-        <action
-            android:id="@+id/action_addCustomerFragment_to_mainFragment"
-            app:destination="@id/mainFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@+id/nav_graph"
-            app:popUpToInclusive="true"/>
-    </fragment>
+        android:label="AddCustomerFragment" />
     <fragment
         android:id="@+id/passwordFragment"
         android:name="com.example.enotebook.screens.main.PasswordFragment"
