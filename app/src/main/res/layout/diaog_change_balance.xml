@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:minWidth="280dp">
+
+    <TextView
+        android:id="@+id/tvTitleChangeBalance"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Qariz mug'darin ozgertiw"
+        android:gravity="bottom"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"/>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tvTitleChangeBalance"
+        app:layout_constraintEnd_toStartOf="@id/tvSum"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleChangeBalance"
+        android:layout_marginTop="@dimen/standard_margin" />
+
+    <TextView
+        android:id="@+id/tvSum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tvName"
+        app:layout_constraintEnd_toEndOf="@id/tvTitleChangeBalance"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleChangeBalance"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:layout_marginStart="8dp" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#669E9B9B"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintEnd_toEndOf="@id/tvSum"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintBottom_toTopOf="@id/etSum"/>
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etSum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Summa"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintEnd_toEndOf="@id/line"
+        app:layout_constraintTop_toBottomOf="@id/line"
+        android:layout_marginTop="@dimen/little_standard_margin"/>
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etComment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/etSum"
+        app:layout_constraintEnd_toEndOf="@id/etSum"
+        app:layout_constraintTop_toBottomOf="@id/etSum"
+        android:layout_marginTop="@dimen/little_standard_margin"
+        android:hint="Qosimsha mag'liwmat"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/btnMinus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/etComment"
+        app:layout_constraintEnd_toStartOf="@id/btnAdd"
+        app:layout_constraintTop_toBottomOf="@id/etComment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Minus"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:layout_marginBottom="@dimen/standard_margin"
+        android:padding="@dimen/little_standard_margin" />
+
+
+    <Button
+        android:id="@+id/btnPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/btnMinus"
+        app:layout_constraintEnd_toEndOf="@id/etComment"
+        app:layout_constraintTop_toBottomOf="@id/etComment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Plyus"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:layout_marginBottom="@dimen/standard_margin"
+        android:layout_marginStart="@dimen/little_standard_margin"
+        android:padding="@dimen/little_standard_margin"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

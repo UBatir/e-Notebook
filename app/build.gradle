@@ -37,7 +37,6 @@ android {
         jvmTarget = '1.8'
     }
 }
-
 ext{
     koin_version = '2.2.2'
     lifecycle_version = "2.2.0"
@@ -48,9 +47,11 @@ ext{
 dependencies {
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.firebase:firebase-config:20.0.3'
-    implementation 'com.google.firebase:firebase-auth:20.0.2'
-    implementation 'com.google.firebase:firebase-firestore-ktx:22.0.2'
+    implementation 'com.google.firebase:firebase-config:21.0.1'
+    implementation 'com.google.firebase:firebase-auth:21.0.1'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.0.1'
+    implementation 'com.google.firebase:firebase-messaging:23.0.0'
+    implementation 'com.google.android.gms:play-services-auth:20.0.1'
     def nav_version = "2.3.3"
     implementation platform('com.google.firebase:firebase-bom:26.4.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
@@ -91,4 +92,22 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //Swipe
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    //dexter
+    implementation 'com.karumi:dexter:6.2.2'
+
+    //password
+    implementation 'com.hanks:passcodeview:0.1.2'
+
+    //viewBinding
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.0-beta02'
+
+    //progress button
+    implementation 'com.github.dmytrodanylyk.android-process-button:library:1.0.4'
+
+    //progress bar
+    implementation 'com.wang.avi:library:2.1.3'
 }

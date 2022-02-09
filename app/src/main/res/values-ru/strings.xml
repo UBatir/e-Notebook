@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Книга долгов</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="email_not_entered_error">Пожалуйста, введите логин!</string>
+    <string name="enter_your_password_error">Пожалуйста, введите пароль!</string>
+    <string name="enter_amount">"Пожалуйста, введите сумму!"</string>
+    <string name="enter_number">"Пожалуйства, введите телефон номер!"</string>
+    <string name="enter_name">"Пожалуйста, введите имя!"</string>
+    <string name="spisok">Список</string>
+    <string name="sms">СМС</string>
+    <string name="search">Поиск...</string>
+    <string name="settings">Настройки</string>
+    <string name="selectLanguage">Выберите языке</string>
+    <string name="save">Сохранить</string>
+    <string name="password">Пароль</string>
+    <string name="login">Логин</string>
+    <string name="registration">Регистрация</string>
+    <string name="phone_number">Телефон номер</string>
+    <string name="name">Имя</string>
+    <string name="sum">Сумма</string>
+    <string name="add">Добавить</string>
+    <string name="comment">Дополнительная информация</string>
+    <string name="get_time">Время взятия:</string>
+    <string name="set_time">Время возврата:</string>
+    <string name="count_months">Количество месяцев:</string>
+    <string name="all">Все:</string>
+    <string name="already_have_an_account">У вас есть уже аккаунт?</string>
+    <string name="Required">Требуется*</string>
+    <string name="google_icon">google icon</string>
+    <string name="sign_in">Войти через:</string>
+    <string name="turnOn">Включите интернет</string>
+    <string name="history">История</string>
+    <string name="changeSum">Изменить баланс</string>
+    <string name="Rename">Изменить имя</string>
+    <string name="delete_contact">Удалить контакт</string>
+    <string name="exit_from_account">Выход из аккаунта</string>
+    <string name="message_exit">Вы действительно хотите выйти из аккаунта?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="Loading">Загрузка...</string>
+    <string name="Success">Success</string>
+</resources>

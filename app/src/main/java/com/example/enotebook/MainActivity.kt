@@ -1,30 +1,50 @@
 package com.example.enotebook
 
-import androidx.appcompat.app.AppCompatActivity
+import android.Manifest
 import android.os.Bundle
-import android.widget.Toolbar
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import com.example.enotebook.data.local.SharedPreferences
 import com.example.enotebook.databinding.ActivityMainBinding
-import com.example.enotebook.utils.APP_ACTIVITY
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import org.koin.android.ext.android.inject
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var mToolbar: Toolbar
-    lateinit var mNavController:NavController
-    private var _binding:ActivityMainBinding?=null
-    val mBinding get() = _binding!!
+    private val settings: SharedPreferences by inject()
+    private lateinit var binding:ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding= ActivityMainBinding.inflate(layoutInflater)
-        setContentView(mBinding.root)
-        APP_ACTIVITY=this
-        mNavController=Navigation.findNavController(this,R.id.nav_host_fragment)
+        binding= ActivityMainBinding.inflate(layoutInflater)
+        setLocale(settings.language)
+        setContentView(binding.root)
+        findNavController(R.id.nav_host_fragment)
+        Dexter.withContext(this)
+                .withPermissions(
+                        Manifest.permission.SEND_SMS,
+                        Manifest.permission.READ_CONTACTS
+                ).withListener(object : MultiplePermissionsListener {
+                    override fun onPermissionsChecked(report: MultiplePermissionsReport) { /* ... */
+                    }
+
+                    override fun onPermissionRationaleShouldBeShown(
+                            permissions: List<com.karumi.dexter.listener.PermissionRequest>, token: PermissionToken
+                    ) { /* ... */
+                    }
+                }).check()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding=null
+    private fun setLocale(localeCode:String) {
+        val resources = resources
+        val dm = resources.displayMetrics
+        val config = resources.configuration
+        val local=Locale(localeCode)
+        config.setLocale(local)
+        resources.updateConfiguration(config, dm)
     }
 }
